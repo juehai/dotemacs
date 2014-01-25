@@ -36,8 +36,10 @@
    (nby/whitespace-detection-mode 'python-mode :tab t)
    (nby/log-warn "whitespace detection failed to start in python-mode"))
 
- (unless (require 'auto-complete-pycomplete nil t)
-   (nby/log-warn "auto-complete-pycomplete failed to load"))
+ (nby/with-feature
+  'auto-complete
+  (unless (require 'auto-complete-pycomplete nil t)
+    (nby/log-warn "auto-complete-pycomplete failed to load")))
 
  ;; do not start python shell at start
  (custom-set-variables
