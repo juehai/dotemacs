@@ -11,11 +11,9 @@
 (global-set-key "\C-x\C-a" #'(lambda () (interactive)
                                (switch-to-buffer (other-buffer))))
 
+(nby/with-feature 'bs (global-set-key "\C-x\C-b" 'bs-show))
 
-(nby/with-feature
- 'bs
- (global-set-key "\C-x\C-b" 'bs-show))
-
+(global-set-key "\C-o" 'nby/occurs)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -33,6 +31,18 @@
                                (bookmark-all-names))))
     (type . bookmark))
   "See (info \"(emacs)Bookmarks\").")
+
+(defun nby/occurs ()
+  "Run anything-occur with current word."
+  (interactive)
+  (let ((anything-compile-source-functions
+         ;; rule out anything-match-plugin because the input is one regexp.
+         (delq 'anything-compile-source--match-plugin
+               (copy-sequence anything-compile-source-functions))))
+    (anything :sources 'anything-c-source-occur
+              :buffer "*Anything Occur*"
+              :input (current-word)
+              :history 'anything-c-grep-history)))
 
 (defun nby/anything-switch-to ()
   "My default anything list."
@@ -69,5 +79,7 @@
       "\\(\\` \\)\\|\\*anything\\|\\*ac-mode\\| \\*Echo Area\\| \\*Minibuf\\|\\*e?shell"))
    (global-set-key "\C-xb" 'nby/anything-switch-to)
    (global-set-key "\C-ci" 'nby/anything-info)))
+
+
 
 ;;; buffer.el ends here
