@@ -34,7 +34,11 @@
 
 (nby/with-feature
  'session
- (add-hook 'after-init-hook 'session-initialize))
-;(add-to-list 'session-globals-exclude 'org-mark-ring)
+ (custom-set-variables
+  '(session-save-file (nby/build-relative-path "db" "session.el")))
+ (add-hook 'after-init-hook 'session-initialize)
+ (nby/with-feature
+  'org
+  (add-to-list 'session-globals-exclude 'org-mark-ring)))
 
 ;;; minibuffer.el ends here

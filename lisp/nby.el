@@ -45,11 +45,20 @@ exist."
   (apply #'nby/path-join user-conf-dir args))
 
 
-(defun nby/el-get-install (feature)
+(defun nby/load (filename)
+  "Load FILENAME and return nil if error occurred."
   (condition-case nil
-    (el-get 'sync `(,feature))
+      (load filename)
     (error (progn
-            (nby/log-warn "Feature %s cannot be installed" feature) 
+             (nby/log-warn "File %s cannot be loaded" filename)
+             nil))))
+
+(defun nby/el-get-install (feature)
+  "Install FEATURE by el-get and return nil if installation failed."
+  (condition-case nil
+      (el-get 'sync `(,feature))
+    (error (progn
+             (nby/log-warn "Feature %s cannot be installed" feature)
              nil))))
 
 (defun nby/require (feature)

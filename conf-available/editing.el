@@ -9,6 +9,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (custom-set-variables
+ '(temporary-file-directory (nby/path-join temporary-file-directory "emacs")))
+
+(custom-set-variables
  '(backup-directory-alist `((".*" . ,temporary-file-directory)))
  '(tab-width           8)               ;; default tab width
  '(fill-column        78)               ;; default column width
@@ -32,7 +35,6 @@
 (global-set-key "\C-c\C-x\C-c"    'comment-region)
 (global-set-key "\C-c\C-x\C-d"    'uncomment-region)
 (global-set-key (kbd "C-x F")     'djcb-find-file-as-root)
-(global-set-key "\C-c\C-\\"       'winner-undo)
 (global-set-key "\C-cs"           'nby/insert-separator)
 (nby/with-feature
  'message

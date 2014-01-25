@@ -136,4 +136,14 @@
  '(scroll-down-aggressively 0.01)
  '(scroll-conservatively 10000))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Winner mode
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(nby/with-feature
+ 'winner
+ (winner-mode t)
+ (global-set-key "\C-c\C-\\" 'winner-undo))
+
 ;;; ui.el ends here

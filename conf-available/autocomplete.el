@@ -12,6 +12,8 @@
 
 (nby/with-feature
  'auto-complete
+ (custom-set-variables
+  '(ac-comphist-file (nby/build-relative-path "db/ac-comphist.el")))
  (when (require 'auto-complete-config nil t)
    (ac-config-default)
    (global-auto-complete-mode t)
