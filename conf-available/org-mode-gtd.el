@@ -148,6 +148,8 @@
                    (org-agenda-todo-ignore-deadlines t)
                    (org-agenda-sorting-strategy
                     '(category-keep))))
+       (tags "LEVEL=1+REFILE-NOTRACK"
+	     ((org-agenda-overriding-header "Dangling")))
        (tags "-REFILE-PROJECT-NOTRACK/"
              ((org-agenda-overriding-header "Tasks to Archive")
               (org-agenda-skip-function 'bh/skip-non-archivable-tasks))))
