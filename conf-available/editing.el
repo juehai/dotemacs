@@ -11,6 +11,9 @@
 (custom-set-variables
  '(temporary-file-directory (nby/path-join temporary-file-directory "emacs")))
 
+(unless (file-exists-p temporary-file-directory)
+  (make-directory temporary-file-directory))
+
 (custom-set-variables
  '(backup-directory-alist `((".*" . ,temporary-file-directory)))
  '(tab-width           8)               ;; default tab width
