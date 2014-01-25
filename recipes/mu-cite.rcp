@@ -1,0 +1,6 @@
+(:name mu-cite
+       :description "mu-cite.el is a powerful citation tool for (X)Emacs."
+       :type http-tar
+       :options ("xzf")
+       :url "http://www.jpl.org/elips/mu/mu-cite-8.1.tar.gz"
+       :features mu-cite)

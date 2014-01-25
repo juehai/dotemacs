@@ -1,0 +1,6 @@
+[submodule "lisp/vendor/el-get"]
+	path = lisp/vendor/el-get
+	url = https://github.com/dimitri/el-get.git
+[submodule "lisp/vendor/pylookup"]
+	path = lisp/vendor/pylookup
+	url = https://github.com/tsgates/pylookup.git
