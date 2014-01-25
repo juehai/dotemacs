@@ -19,6 +19,9 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(nby/require 'bookmark)
+(nby/with-feature
+ 'bookmark
+ (custom-set-variables
+  '(bookmark-default-file (nby/build-relative-path "db/bookmarks.el"))))
 
 ;;; bookmark.el ends here

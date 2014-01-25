@@ -2,6 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 
+(setq nby/startup-timestamp (float-time))
 ;; enable debugging when env variable set
 (when (getenv "EMACS_DEBUG")
   (setq debug-on-error t
@@ -30,6 +31,9 @@
 
 ;; load user custom settings after everything
 (nby/load user-local-file)
-
+(setq initial-scratch-message
+      (concat initial-scratch-message
+	      (format ";; It took %.2f seconds to start emacs.\n\n"
+		      (- (float-time) nby/startup-timestamp))))
 (provide 'init)
 ;;; init.el ends here
