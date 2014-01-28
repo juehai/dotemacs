@@ -33,6 +33,13 @@ If TAB is not nil, hightlight tab characters"
      ("\s+$" (0 'nby/font-lock-leading-whitespace-face t))
      ("^.\\{79\\}\\(.+\\)$" (1 'nby/font-lock-trailing-whitespace-face t)))))
 
+(defun nby/indent-region (start end)
+  (interactive "r")
+  (indent-rigidly start end tab-width))
+
+(defun nby/unindent-region (start end)
+  (interactive "r")
+  (indent-rigidly start end (* -1 tab-width)))
 
 (provide 'nby-coding)
 ;;; nby-coding.el ends here

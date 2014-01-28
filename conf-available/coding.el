@@ -26,6 +26,9 @@
 ;; delete trailing whitespace, hope it's safe
 (add-hook 'before-save-hook #'(lambda () (delete-trailing-whitespace)))
 
+;; indent & unindent
+(global-set-key "\C-c>" 'nby/indent-region)
+(global-set-key "\C-c<" 'nby/unindent-region)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
