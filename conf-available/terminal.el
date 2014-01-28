@@ -31,18 +31,8 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(setq ansi-color-names-vector
-      ["black" "red4" "green4" "yellow4"
-       "DeepSkyBlue3" "magenta4" "cyan4" "white"])
-(setq ansi-term-color-vector
-      [unspecified "#000000" "#963F3C" "#5FFB65" "#FFFD65"
-       "#0082FF" "#FF2180" "#57DCDB" "#FFFFFF"])
-
 (custom-set-variables
- '(ansi-color-for-comint-mode t)
- '(term-default-bg-color "#111")
- '(term-default-fg-color "grey80"))
-
+ '(ansi-color-for-comint-mode t))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; Terminal using Anything

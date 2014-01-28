@@ -4,3 +4,6 @@
 [submodule "lisp/vendor/pylookup"]
 	path = lisp/vendor/pylookup
 	url = https://github.com/tsgates/pylookup.git
+[submodule "lisp/vendor/org-reveal"]
+	path = lisp/vendor/org-reveal
+	url = https://github.com/yjwen/org-reveal.git
