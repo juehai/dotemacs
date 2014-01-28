@@ -150,6 +150,12 @@
                     '(category-keep))))
        (tags "LEVEL=1+REFILE-NOTRACK"
 	     ((org-agenda-overriding-header "Dangling")))
+       (tags-todo "+STYLE<>\"habit\"-MAYBE-REFILE-CANCELLED-NOTRACK/!-STARTED-HOLD-NEXT"
+                  ((org-agenda-overriding-header "Scheduled TODO")
+		   (org-agenda-todo-ignore-scheduled 'past)
+                   (org-tags-match-list-sublevels 'indented)
+                   (org-agenda-sorting-strategy
+                    '(category-keep))))
        (tags "-REFILE-PROJECT-NOTRACK/"
              ((org-agenda-overriding-header "Tasks to Archive")
               (org-agenda-skip-function 'bh/skip-non-archivable-tasks))))
