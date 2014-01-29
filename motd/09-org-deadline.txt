@@ -1,0 +1,4 @@
+add -14d to DEADLINE to force the deadline to be shown 14 days earlier. e.g,
+
+** TODO TASKS
+SCHEDULED: <2014-02-07 Fri> DEADLINE: <2014-02-07 Fri -14d>
