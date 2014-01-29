@@ -73,14 +73,17 @@
    ;; patch some colors for other modes
    (color-theme-tomorrow--with-colors
     'night
-    (custom-set-faces
-     ;; FIXME: The following color settings for terminal seems not work
+    (custom-set-variables
      `(term-default-bg-color ,background)
      `(term-default-fg-color ,foreground)
      `(ansi-color-names-vector [,background ,red ,green ,yellow
 					    ,blue ,purple ,aqua ,foreground])
      `(ansi-term-color-vector [,background ,red ,green ,yellow
-					   ,blue ,purple ,aqua ,foreground])
+					   ,blue ,purple ,aqua ,foreground]))
+    (custom-set-faces
+     ;; FIXME: The following color settings for terminal seems not work
+     `(ecb-default-highlight-face (( t (:foreground ,background :background ,orange))))
+     `(speedbar-tag-face (( t (:foreground ,yellow))))
      `(bm-face (( t (:foreground ,background :background ,orange))))
      `(highlight (( t (:foreground ,background))))
      `(org-hide (( t (:background ,background :foreground ,background))))))))
