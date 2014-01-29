@@ -8,14 +8,15 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(custom-set-variables
- '(temporary-file-directory (nby/path-join temporary-file-directory "emacs")))
+(defvar nby/emacs-temporary-file-directory
+  (nby/path-join temporary-file-directory "emacs")
+  "Temporary directory for emacs files")
 
-(unless (file-exists-p temporary-file-directory)
-  (make-directory temporary-file-directory))
+(unless (file-exists-p nby/emacs-temporary-file-directory)
+  (make-directory nby/emacs-temporary-file-directory))
 
 (custom-set-variables
- '(backup-directory-alist `((".*" . ,temporary-file-directory)))
+ '(backup-directory-alist `((".*" . ,nby/emacs-temporary-file-directory)))
  '(tab-width           8)               ;; default tab width
  '(fill-column        78)               ;; default column width
  '(mouse-yank-at-point t)               ;; dont insert at mouse point
