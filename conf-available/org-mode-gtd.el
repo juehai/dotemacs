@@ -20,7 +20,12 @@
  '(org-global-properties '(("Effort_ALL" . "0:10 0:30 1:00 1:30 2:00 4:00 8:00"))))
 
 ;; save org schedule every 30 seconds
-(run-with-timer 0 30 'org-save-all-org-buffers)
+;; this impl omits annoying message from 'org-save-all-org-buffers'
+(run-with-timer 0 30
+		#'(lambda ()
+		    (save-some-buffers t #'(lambda ()
+					     (derived-mode-p 'org-mode)))
+		    (when (featurep 'org-id) (org-id-locations-save))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
