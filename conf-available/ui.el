@@ -83,6 +83,7 @@
     (custom-set-faces
      ;; FIXME: The following color settings for terminal seems not work
      `(ecb-default-highlight-face (( t (:foreground ,background :background ,orange))))
+     `(ecb-tag-header-face (( t (:foreground ,background :background ,blue))))
      `(speedbar-tag-face (( t (:foreground ,yellow))))
      `(bm-face (( t (:foreground ,background :background ,orange))))
      `(highlight (( t (:foreground ,background))))
