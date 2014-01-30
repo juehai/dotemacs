@@ -44,6 +44,8 @@
    (nby/whitespace-detection-mode 'yaml-mode :tab t)
    (nby/log-warn "whitespace detection failed to start in yaml-mode"))
 
+ ;; saltstack configurations
+ (add-to-list 'auto-mode-alist '("\\.sls$" . yaml-mode))
  (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
  (add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode)))
 
@@ -58,7 +60,7 @@
 (add-hook
  'arduino-mode-hook
  #'(lambda ()
-     (local-set-key "\C-c\C-c" 'compile))))
+     (local-set-key "\C-c\C-c" #'(lambda () (compile "scons upload"))))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
