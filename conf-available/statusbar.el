@@ -584,3 +584,4 @@ install the memoized function over the original function."
                              (powerline-make-text      "  "    nil )))))
 
 ;;; powerline.el ends here
+
