@@ -1,0 +1,4 @@
+(:name hackernews
+       :description "Hackernews client for Emacs"
+       :type elpa
+       :features hackernews)
