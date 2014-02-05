@@ -86,7 +86,7 @@
 
 	    (rhs  (if active
 		      (list
-		       (funcall separator-right mode-line-face face2)
+		       (funcall separator-right mode-line-face clock-face)
 		       (powerline-raw (propertize (powerline-org-task) 'face clock-face) clock-face)
 		       (funcall separator-right clock-face face1)
 		       (powerline-raw (format-time-string " % %Y-%m-%d %a %H:%M ") face1))
