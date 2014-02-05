@@ -94,11 +94,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defvar nby/org-base-directory "~/notes/")
+(defvar nby/org-archive-pattern "~/notes/archive/%s_archive::")
 (defvar nby/org-default-schedule-file "schedule/default.org")
 (defvar nby/org-default-note-file "kb/note.org")
 (defvar nby/org-default-solution-file "kb/solution.org")
 
 (custom-set-variables
+ '(org-archive-location nby/org-archive-pattern)
  '(org-id-locations-file (convert-standard-filename
                           (nby/build-relative-path "db/org-id-locations.el")))
  '(org-reverse-note-order t)
