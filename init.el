@@ -34,7 +34,12 @@
 (nby/load user-local-file)
 (setq initial-scratch-message
       (concat initial-scratch-message
-	      (format ";; It took %.2f seconds to start emacs.\n\n"
-		      (- (float-time) nby/startup-timestamp))))
+	      (format (concat
+		       ";; It took %.2f seconds to start emacs.\n"
+		       ";; CJK font: %s, Latin Font: %s\n"
+		       "\n")
+		      (- (float-time) nby/startup-timestamp)
+		      nby/x-font-cjk
+		      nby/x-font-latin)))
 (provide 'init)
 ;;; init.el ends here
