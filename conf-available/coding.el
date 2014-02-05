@@ -76,6 +76,9 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(nby/with-feature 'magit)
+(nby/with-feature
+ 'magit
+ (global-set-key "\C-cg" 'magit-status))
+
 
 ;;; coding.el ends here
