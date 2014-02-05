@@ -104,26 +104,28 @@
 	       (powerline-fill nil (powerline-width rhs))
 	       (powerline-render rhs))))))
 
- (color-theme-tomorrow--with-colors
-  'night
-  (custom-set-faces
-   `(mode-line
-     ((t (:background "grey15" :inherit mode-line))))
-   `(mode-line-inactive
-     ((t (:foreground "grey44" :inherit mode-line))))
-   `(powerline-inactive
-     ((t (:background "grey22" :inherit mode-line))))
-   `(powerline-modified-bound-warning
-     ((t(:background ,yellow :foreground ,background :inherit mode-line))))
-   `(powerline-clock-inactive
-     ((t (:background ,orange :foreground ,background :inherit mode-line))))
-   `(powerline-clock-active ((t (:background "grey19" :foreground ,yellow :inherit mode-line))))
-   `(powerline-flag-on
-     ((t (:background ,green :foreground ,background :inherit mode-line))))
-   `(powerline-active1 ((t (:background "grey23" :foreground ,blue :inherit mode-line))))
-   `(powerline-inactive1 ((t (:foreground "grey44" :background "grey19"))))
-   `(powerline-active2 ((t (:background "grey19" :foreground ,green :inherit mode-line))))
-   `(powerline-inactive2 ((t (:foreground "grey44" :background "grey15")))))))
+ (nby/with-feature
+  'tomorrow-night-theme
+  (color-theme-tomorrow--with-colors
+   'night
+   (custom-set-faces
+    `(mode-line
+      ((t (:background "grey15" :inherit mode-line))))
+    `(mode-line-inactive
+      ((t (:foreground "grey44" :inherit mode-line))))
+    `(powerline-inactive
+      ((t (:background "grey22" :inherit mode-line))))
+    `(powerline-modified-bound-warning
+      ((t(:background ,yellow :foreground ,background :inherit mode-line))))
+    `(powerline-clock-inactive
+      ((t (:background ,orange :foreground ,background :inherit mode-line))))
+    `(powerline-clock-active ((t (:background "grey19" :foreground ,yellow :inherit mode-line))))
+    `(powerline-flag-on
+      ((t (:background ,green :foreground ,background :inherit mode-line))))
+    `(powerline-active1 ((t (:background "grey23" :foreground ,blue :inherit mode-line))))
+    `(powerline-inactive1 ((t (:foreground "grey44" :background "grey19"))))
+    `(powerline-active2 ((t (:background "grey19" :foreground ,green :inherit mode-line))))
+    `(powerline-inactive2 ((t (:foreground "grey44" :background "grey15"))))))))
 
 
 ;;; powerline.el ends here
