@@ -12,8 +12,9 @@
 (defvar user-home-dir "~")
 (defvar user-conf-dir (concat user-home-dir "/.emacs.d"))
 (defvar user-info-file (concat user-home-dir "/.userinfo.el"))
+(defvar user-custom-file (concat user-home-dir "/.usercustom.el"))
 (defvar user-local-file (concat user-home-dir "/.userlocal.el"))
-(setq custom-file user-local-file)
+(setq custom-file user-custom-file)
 
 (require 'nby (concat user-conf-dir "/lisp/nby.el"))
 
