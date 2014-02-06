@@ -96,7 +96,7 @@
 (defvar nby/org-base-directory "~/notes/")
 (defvar nby/org-archive-pattern "~/notes/archive/%s_archive::")
 (defvar nby/org-default-schedule-file "schedule/default.org")
-(defvar nby/org-default-note-file "kb/note.org")
+(defvar nby/org-default-note-file "note/misc.org")
 (defvar nby/org-default-solution-file "kb/solution.org")
 
 (custom-set-variables
@@ -113,9 +113,6 @@
       "* MEETING with %? :MEETING:\n%U" :clock-in t :clock-resume t :prepend t)
      ("n" "NOTE" entry (file (nby/path-join nby/org-base-directory nby/org-default-note-file))
       "* %?\n%U\n%i" :clock-in nil :clock-resume t :prepend t)
-     ("s" "SOLUTION" entry (file (nby/path-join nby/org-base-directory nby/org-default-solution-file))
-      "* %?\n%U\n\n** description\n%x\n\n** solution\n\n** environment\n\n** analysis\n\n"
-      :clock-in nil :clock-resume t :prepend t)
      ("h" "HABIT" entry (file (nby/path-join nby/org-base-directory nby/org-default-schedule-file))
       "* NEXT %?\n%a\nSCHEDULED: %t\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n  %i\n%U"))))
 
