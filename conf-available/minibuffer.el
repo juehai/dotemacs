@@ -13,6 +13,7 @@
  'ido
  (ido-mode t)
  (custom-set-variables
+  '(ido-save-directory-list-file (nby/build-relative-path "db/ido-last.el"))
   '(ido-max-directory-size 100000)))
 
 

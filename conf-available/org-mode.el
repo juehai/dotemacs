@@ -41,6 +41,10 @@
  '(org-use-fast-todo-selection t)
  '(org-hide-leading-stars t)
 
+ ;; publish timestamp persistent directory
+ '(org-publish-timestamp-directory
+   (nby/build-relative-path "db/org-timestamp"))
+
  ;; Targets complete directly with IDO
  '(org-completion-use-ido t)
  '(org-outline-path-complete-in-steps nil)

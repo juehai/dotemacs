@@ -17,6 +17,7 @@
 
 (custom-set-variables
  '(backup-directory-alist `((".*" . ,nby/emacs-temporary-file-directory)))
+ '(recentf-save-file (nby/build-relative-path "db/recentf.el"))
  '(tab-width           8)               ;; default tab width
  '(fill-column        78)               ;; default column width
  '(mouse-yank-at-point t)               ;; dont insert at mouse point
