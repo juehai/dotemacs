@@ -73,6 +73,8 @@
    ;; patch some colors for other modes
    (color-theme-tomorrow--with-colors
     'night
+    (setq org-priority-faces
+	  `((?A . (:foreground ,background :background ,red :weight "bold"))))
     (custom-set-variables
      `(term-default-bg-color ,background)
      `(term-default-fg-color ,foreground)
@@ -82,6 +84,7 @@
 					   ,blue ,purple ,aqua ,foreground]))
     (custom-set-faces
      ;; FIXME: The following color settings for terminal seems not work
+     `(newsticker-treeview-selection-face (( t (:foreground ,blue :background "grey20"))))
      `(ecb-default-highlight-face (( t (:foreground ,background :background ,orange))))
      `(ecb-tag-header-face (( t (:foreground ,background :background ,blue))))
      `(speedbar-tag-face (( t (:foreground ,yellow))))
