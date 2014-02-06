@@ -31,6 +31,7 @@
       (load (nby/path-join dir el) nil nil t))))
 
 ;; load user custom settings after everything
+(nby/load user-custom-file)
 (nby/load user-local-file)
 (setq initial-scratch-message
       (concat initial-scratch-message
