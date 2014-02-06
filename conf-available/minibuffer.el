@@ -11,10 +11,11 @@
 ;; ido is a builtin feature. no need to use nby/require
 (nby/with-feature
  'ido
- (ido-mode t)
+ (setq ido-save-directory-list-file
+       (nby/build-relative-path "db/ido-last.el"))
  (custom-set-variables
-  '(ido-save-directory-list-file (nby/build-relative-path "db/ido-last.el"))
-  '(ido-max-directory-size 100000)))
+  '(ido-max-directory-size 100000))
+ (ido-mode t))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
