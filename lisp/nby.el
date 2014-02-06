@@ -2,7 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 
-(setq debug-on-error)
+(require 'cl)
 
 (defvar user-home-dir (getenv "HOME"))
 (defvar user-conf-dir (concat user-home-dir "/.emacs.d"))
@@ -61,27 +61,32 @@ exist."
              (nby/log-warn "Feature %s cannot be installed" feature)
              nil))))
 
-(defun nby/require (feature)
-  "Require a FEATURE.  If not exist install it by el-get."
-  (nby/add-to-load-path (nby/path-join "lisp/vendor" (symbol-name feature)) t)
-  (unless (require feature nil t)
-    (if (el-get-recipe-filename feature)
-        (nby/el-get-install feature)
-      (progn
-        (nby/log-warn "No recipe for feature %s"
-                      feature)
-        nil))))
+(defun* nby/require (feature &key (package-name nil))
+  "Require a FEATURE.  If not exist install it by el-get.
+If PACKAGE-NAME specified, install PACKAGE-NAME and require FEATURE."
+  (let ((package (if package-name package-name feature)))
+    (nby/log-info "finding %s from %s" feature package)
+    (nby/add-to-load-path (nby/path-join "lisp/vendor" (symbol-name feature)) t)
+    (unless (require feature nil t)
+      (if (el-get-recipe-filename package)
+	  (nby/el-get-install package)
+	(progn
+	  (nby/log-warn "No recipe for feature %s"
+			feature)
+	  nil)))))
 
 (defmacro nby/with-feature (feature &rest body)
   "When FEATURE is provided, execute BODY."
-  (let ((name (gensym)))
-  `(let ((,name ,feature))
-     (nby/require ,name)
-     (if (require ,name nil t)
-         (progn ,@body)
-       (nby/log-warn ,(concat "Feature %s cannot be found. "
-                              "Some settings will be disabled")
-                     ,name)))))
+  (let ((name (gensym))
+	(package (gensym)))
+    `(let ((,name ,feature)
+	   (,package ,feature))
+       (nby/require ,name :package-name ,package)
+       (if (require ,name nil t)
+	   (progn ,@body)
+	 (nby/log-warn ,(concat "Feature %s cannot be found. "
+				"Some settings will be disabled")
+		       ,name)))))
 
 (defmacro nby/local-set-variables (&rest pairs)
   "Make variable buffer-local and set according to variable/value PAIRS."
