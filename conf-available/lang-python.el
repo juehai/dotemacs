@@ -59,7 +59,8 @@
        '(python-indent        nby/python-indentation-size)
        '(py-indent-offset     nby/python-indentation-size)
        '(indent-tabs-mode     nil))
-      (py-smart-indentation-on)
+      ;; FIXME: smart indentation may cause python-mode hang
+      (py-smart-indentation-off)
       (nby/with-feature
        'auto-complete
        (add-to-list 'ac-sources 'ac-source-pycomplete))
