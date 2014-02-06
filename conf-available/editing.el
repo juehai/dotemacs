@@ -15,6 +15,8 @@
 (unless (file-exists-p nby/emacs-temporary-file-directory)
   (make-directory nby/emacs-temporary-file-directory))
 
+(nby/log-info "backup/autosave directory is " nby/emacs-temporary-file-directory)
+
 (custom-set-variables
  '(backup-directory-alist `((".*" . ,nby/emacs-temporary-file-directory)))
  '(recentf-save-file (nby/build-relative-path "db/recentf.el"))
@@ -76,8 +78,6 @@
  '(kept-new-versions 10)
  '(kept-old-versions 5)
  '(version-control t))                      ;; use versioned backups
-
-(nby/log-info "backup/autosave directory is " temporary-file-directory)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
