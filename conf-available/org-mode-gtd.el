@@ -69,6 +69,28 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
+;; Custom faces
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(nby/with-feature
+ 'tomorrow-night-theme
+ (color-theme-tomorrow--with-colors
+  'night
+  (custom-set-variables
+   `(org-todo-keyword-faces
+     '(("TODO" :foreground ,red :weight normal)
+       ("NEXT" :foreground ,yellow :weight normal)
+       ("STARTED" :foreground ,background :background ,green :weight normal)
+       ("DONE" :foreground ,green :weight normal)
+       ("WAITING" :foreground ,background :background ,orange :weight bold)
+       ("MEETING" :foreground ,blue :weight normal)
+       ("CANCELLED" :foreground "grey22" :weight normal)
+       ("CHECK" :foreground ,orange :weight normal)
+       ("VERIFIED" :foreground ,green :weight normal))))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 ;; Tags
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
