@@ -63,6 +63,8 @@
        '(indent-tabs-mode     nil))
       ;; FIXME: smart indentation may cause python-mode hang
       (py-smart-indentation-off)
+      (add-to-list 'ac-sources 'ac-source-pycomplete)
+      (add-to-list 'ac-sources 'ac-source-yasnippet)
       (nby/with-feature
        'auto-complete
        (add-to-list 'ac-sources 'ac-source-pycomplete))
