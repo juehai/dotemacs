@@ -51,11 +51,10 @@
     (:eval
      (let* ((active (powerline-selected-window-active))
 	    (modified (if active
-			  (if (buffer-modified-p)
-			      (if (< (current-column) 80)
-				  'powerline-modified-active
-				'powerline-modified-bound-warning)
-			    nil)
+			  (if (< (current-column) 80)
+			      (if (buffer-modified-p)
+				  'powerline-modified-active nil)
+			    'powerline-modified-bound-warning)
 			'powerline-modified-inactive))
 	    (mode-line-face (if active 'mode-line 'mode-line-inactive))
 	    (face1 (if active 'powerline-active1 'powerline-inactive1))
