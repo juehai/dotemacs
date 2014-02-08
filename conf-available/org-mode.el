@@ -33,6 +33,10 @@
 ;; auto mode
 (nby/with-feature
  'org
+ ;; enable grammar check when using org-mode
+ (add-hook 'org-mode-hook
+           #'(lambda ()
+	       (flyspell-mode t)))
  (add-to-list 'auto-mode-alist '("\\.\\(org\\|org_archive\\|txt\\)$" . org-mode)))
 
 (custom-set-variables
