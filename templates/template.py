@@ -1,4 +1,4 @@
-#!python2.7
+#!/usr/bin/env python2.7
 # vim: tabstop=4 shiftwidth=4 softtabstop=4 et
 #
 # filename   : `(buffer-name)`
