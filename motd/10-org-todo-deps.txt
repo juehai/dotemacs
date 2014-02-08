@@ -1,0 +1,5 @@
+You can use COOKIE_DATA property to calculate TODO statistics of a sub-tree. e.g,
+* Parent capturing statistics [2/20]
+:PROPERTIES:
+:COOKIE_DATA: todo recursive
+:END:
