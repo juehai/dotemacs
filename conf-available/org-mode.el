@@ -6,7 +6,8 @@
 ;; require features
 (nby/with-feature
  'org
- (dolist (feature '(org-habit ox-man ox-taskjuggler ox-beamer org-mime))
+ (dolist (feature '(org-habit ox-man ox-taskjuggler
+			      ox-beamer org-mime org-checklist))
    (unless (require feature nil t)
      (nby/log-warn "%s cannot be loaded" (symbol-name feature)))))
 
@@ -64,6 +65,9 @@
 
  ;; dont mark done when subtrees have undone task
  '(org-enforce-todo-dependencies t)
+
+ ;; dont mark done when there are unchecked checkboxes
+ '(org-enforce-todo-checkbox-dependencies t)
 
  '(org-clone-delete-id t)
 
