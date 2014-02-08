@@ -81,11 +81,11 @@
    `(org-todo-keyword-faces
      '(("TODO" :foreground ,red :weight normal)
        ("NEXT" :foreground ,yellow :weight normal)
-       ("STARTED" :foreground ,background :background ,green :weight normal)
+       ("STARTED" :foreground ,background :background ,green)
        ("DONE" :foreground ,green :weight normal)
-       ("WAITING" :foreground ,background :background ,orange :weight bold)
+       ("WAITING" :foreground ,background :background ,orange)
        ("MEETING" :foreground ,blue :weight normal)
-       ("CANCELLED" :foreground "grey22" :weight normal)
+       ("CANCELLED" :foreground "grey32" :weight normal)
        ("CHECK" :foreground ,orange :weight normal)
        ("VERIFIED" :foreground ,green :weight normal))))))
 
