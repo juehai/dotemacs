@@ -64,7 +64,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;; VCS
+;; Haskell mode
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -79,6 +79,24 @@
 (nby/with-feature
  'magit
  (global-set-key "\C-cg" 'magit-status))
+
+(nby/with-feature
+ 'git-gutter
+ (nby/with-feature
+  'git-gutter-fringe
+
+  (global-git-gutter-mode +1)
+
+  (setq git-gutter:modified-sign "  " ;; two space
+	git-gutter:added-sign "++"    ;; multiple character is OK
+	git-gutter:deleted-sign "--")
+
+  (color-theme-tomorrow--with-colors
+   'night
+   (set-face-background 'git-gutter:modified purple) ;; background color
+   (set-face-foreground 'git-gutter:added green)
+   (set-face-foreground 'git-gutter:deleted red))))
+
 
 
 ;;; coding.el ends here
