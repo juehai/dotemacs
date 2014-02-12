@@ -77,6 +77,8 @@
  'tomorrow-night-theme
  (color-theme-tomorrow--with-colors
   'night
+  (custom-set-faces
+      `(org-agenda-clocking ((t (:background ,green :foreground ,background)))))
   (custom-set-variables
    `(org-todo-keyword-faces
      '(("TODO" :foreground ,red :weight normal)
