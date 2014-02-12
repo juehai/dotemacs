@@ -82,20 +82,24 @@
 
 (nby/with-feature
  'git-gutter
- (nby/with-feature
-  'git-gutter-fringe
+ (global-git-gutter-mode +1)
+ (setq git-gutter:modified-sign "  " ;; two space
+       git-gutter:added-sign "++"    ;; multiple character is OK
+       git-gutter:deleted-sign "--")
+ (color-theme-tomorrow--with-colors
+  'night
+  (set-face-foreground 'git-gutter:modified "yellow")
+  (set-face-foreground 'git-gutter:added    "blue")
+  (set-face-foreground 'git-gutter:deleted  "white")))
 
-  (global-git-gutter-mode +1)
+(nby/with-feature
+ 'git-gutter-fringe
+ (color-theme-tomorrow--with-colors
+  'night
+  (set-face-foreground 'git-gutter-fr:modified yellow)
+  (set-face-foreground 'git-gutter-fr:added    blue)
+  (set-face-foreground 'git-gutter-fr:deleted  red)))
 
-  (setq git-gutter:modified-sign "  " ;; two space
-	git-gutter:added-sign "++"    ;; multiple character is OK
-	git-gutter:deleted-sign "--")
-
-  (color-theme-tomorrow--with-colors
-   'night
-   (set-face-background 'git-gutter:modified purple) ;; background color
-   (set-face-foreground 'git-gutter:added green)
-   (set-face-foreground 'git-gutter:deleted red))))
 
 
 
