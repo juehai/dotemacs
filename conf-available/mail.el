@@ -18,6 +18,12 @@
  '(smtpmail-smtp-server "smtp.gmail.com")
  '(smtpmail-smtp-service 587))
 
+;; starttls support
+(require 'starttls)
+(setq starttls-use-gnutls t
+      smtpmail-debug-info t
+      smtpmail-debug-verb t)
+
 (nby/with-feature
  'mu4e
  (custom-set-variables
