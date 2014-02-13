@@ -89,15 +89,15 @@
  (color-theme-tomorrow--with-colors
   'night
   (set-face-foreground 'git-gutter:modified "yellow")
-  (set-face-foreground 'git-gutter:added    "blue")
-  (set-face-foreground 'git-gutter:deleted  "white")))
+  (set-face-foreground 'git-gutter:added    "green")
+  (set-face-foreground 'git-gutter:deleted  "red")))
 
 (nby/with-feature
  'git-gutter-fringe
  (color-theme-tomorrow--with-colors
   'night
   (set-face-foreground 'git-gutter-fr:modified yellow)
-  (set-face-foreground 'git-gutter-fr:added    blue)
+  (set-face-foreground 'git-gutter-fr:added    green)
   (set-face-foreground 'git-gutter-fr:deleted  red)))
 
 
