@@ -38,7 +38,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (global-set-key "\M-g"            'goto-line)
-(global-set-key "\C-cg"           'grep-find)
+(global-set-key "\C-cf"           'grep-find)
 (global-set-key "\C-c\C-x\C-c"    'comment-region)
 (global-set-key "\C-c\C-x\C-d"    'uncomment-region)
 (global-set-key (kbd "C-x F")     'djcb-find-file-as-root)
