@@ -23,7 +23,7 @@
 
 (define-auto-insert "\\.org$" "template.org")
 (define-auto-insert "\\.ino$" "template.ino")
-(define-auto-insert "\\.\\([C]\\|cc\\|cpp\\)$"  "template.c")
+(define-auto-insert "\\.\\([C]\\|cc\\|cpp\\)$"  "template.cc")
 (define-auto-insert "\\.\\([Hh]\\|hh\\|hpp\\)$" "template.h")
 (define-auto-insert "\\.go$" "template.go")
 (define-auto-insert "\\.tex$" "template.tex")
