@@ -160,4 +160,14 @@
  (winner-mode t)
  (global-set-key "\C-c\C-\\" 'winner-undo))
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Fringe Width
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(custom-ste-variables
+ '(left-fringe-width 11)
+ '(right-fringe-width 11))
+
 ;;; ui.el ends here
