@@ -166,7 +166,7 @@
 ;; Fringe Width
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(custom-ste-variables
+(custom-set-variables
  '(left-fringe-width 11)
  '(right-fringe-width 11))
 
