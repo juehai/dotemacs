@@ -81,11 +81,11 @@
  'python-mode
  (nby/with-feature
   'jedi
-  (autoload 'jedi:setup "jedi" nil t)
-  (add-hook 'python-mode-hook 'jedi:setup)
+;  (autoload 'jedi:setup "jedi" nil t)
   (custom-set-variables
-   '(jedi:setup-keys t)
-   '(jedi:complete-on-dot t))))
+   '(jedi:setup-keys nil)
+   '(jedi:complete-on-dot t))
+  (add-hook 'python-mode-hook 'jedi:setup)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
