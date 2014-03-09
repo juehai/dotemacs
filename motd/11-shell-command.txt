@@ -1,0 +1,1 @@
+use C-u M-! to insert output from a command
