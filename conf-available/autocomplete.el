@@ -33,6 +33,7 @@
   '(ac-comphist-file (nby/build-relative-path "db/ac-comphist.el")))
  (when (require 'auto-complete-config nil t)
    (ac-config-default)
+   (add-to-list 'ac-sources 'ac-source-filename)
    (global-auto-complete-mode t)
 ;   (define-key ac-complete-mode-map "\t" 'ac-expand)
    (define-key ac-complete-mode-map "\C-n" 'ac-next)

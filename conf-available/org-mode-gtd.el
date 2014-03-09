@@ -52,7 +52,7 @@
 
  ;; define keywords
  '(org-todo-keywords
-   '((sequence "TODO(t)" "NEXT(n)" "STARTED(s)" "|" "DONE(d!/!)")
+   '((sequence "TODO(t)" "STARTED(s)" "|" "DONE(d!/!)")
      (sequence "WAITING(w@/!)" "|" "CANCELLED(c@/!)")
      (sequence "CHECK(k)" "|" "VERIFIED(v!)")))
 
@@ -105,11 +105,12 @@
      ("@STADIUM" . ?s)
      (:endgroup)
      (:startgroup)
-     ("ADTIME"   . ?a)
-     ("PERSONAL" . ?p)
-     ("QUNAR"    . ?q)
-     (:endgroup)
-     ("MAYBE"    . ?m))))
+     ("PLAN"     . ?p)
+     ("DESIGN"   . ?d)
+     ("RESEARCH" . ?r)
+     ("WORKING"  . ?w)
+     ("REVIEW"   . ?v)
+     (:endgroup))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -150,7 +151,34 @@
 (custom-set-variables
  `(org-agenda-files '(,(nby/path-join nby/org-base-directory "schedule")))
  '(org-agenda-custom-commands
-   '(("a" "Default Agenda"
+   '(("k" "Kanban"
+       ((tags-todo "PLAN"
+                  ((org-agenda-overriding-header "Planning")
+                   (org-tags-match-list-sublevels t)
+                   (org-agenda-sorting-strategy
+                    '(todo-state-down effort-up category-keep))))
+	(tags-todo "DESIGN"
+		   ((org-agenda-overriding-header "Design")
+		    (org-tags-match-list-sublevels t)
+		    (org-agenda-sorting-strategy
+		     '(todo-state-down effort-up category-keep))))
+	(tags-todo "RESEARCH"
+		   ((org-agenda-overriding-header "Research")
+		    (org-tags-match-list-sublevels t)
+		    (org-agenda-sorting-strategy
+		     '(todo-state-down effort-up category-keep))))
+	(tags-todo "WORKING"
+		   ((org-agenda-overriding-header "Work in Progress")
+		    (org-tags-match-list-sublevels t)
+		    (org-agenda-sorting-strategy
+		     '(todo-state-down effort-up category-keep))))
+	(tags-todo "REVIEW"
+		   ((org-agenda-overriding-header "In Review")
+		    (org-tags-match-list-sublevels t)
+		    (org-agenda-sorting-strategy
+		     '(todo-state-down effort-up category-keep))))
+      ))
+     ("a" "Default Agenda"
       ((agenda ""
                ((org-agenda-ndays 1)
                 (org-agenda-priority '(priority-up effort-down))))
