@@ -107,7 +107,7 @@ as the default task."
     ;;
     (save-restriction
       (widen)
-                                        ; Find the tags on the current task
+      ;; Find the tags on the current task
       (if (and (equal major-mode 'org-mode) (not (org-before-first-heading-p)) (eq arg 4))
           (org-clock-in '(16))
         (bh/clock-in-organization-task-as-default)))))
@@ -116,8 +116,13 @@ as the default task."
   (interactive)
   (setq bh/keep-clock-running nil)
   (when (org-clock-is-active)
+;    (save-restriction
+;      (org-clock-goto)
+;      (setq bh/organization-task-id (org-id-get-create)))
     (org-clock-out))
   (org-agenda-remove-restriction-lock))
+
+(defvar bh/organization-task-id nil)
 
 (defun bh/clock-in-organization-task-as-default ()
   (interactive)
@@ -173,7 +178,6 @@ as the default task."
         (org-with-point-at pom
           (org-agenda-set-restriction-lock restriction-type)))))))
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; Interact with screensaver
@@ -188,13 +192,11 @@ as the default task."
    (if p-screen-locked
        (if org-clock-current-task
            (progn
-             (setq nby/org-clock-last-task org-clock-current-task)
              (bh/punch-out)
-             (message "punch-out because screen is locked"))
-         (setq nby/org-clock-last-task nil))
+             (message "punch-out because screen is locked")))
      (if nby/org-clock-last-task
          (progn
-           (bh/punch-in 0)
+           (bh/punch-in t)
            (message "punch-in because screen is unlocked")))))
 
  (if (eq system-type 'gnu/linux)
