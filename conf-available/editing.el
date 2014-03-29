@@ -42,7 +42,7 @@
 (global-set-key "\C-c\C-x\C-c"    'comment-region)
 (global-set-key "\C-c\C-x\C-d"    'uncomment-region)
 (global-set-key (kbd "C-x F")     'djcb-find-file-as-root)
-(global-set-key "\C-cs"           'nby/insert-separator)
+;(global-set-key "\C-cs"           'nby/insert-separator)
 (nby/with-feature
  'message
  (global-set-key "\C-c\M-m"        'message-mark-inserted-region))
