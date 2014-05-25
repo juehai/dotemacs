@@ -170,4 +170,15 @@
  '(left-fringe-width 11)
  '(right-fringe-width 11))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Sticky Window
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(nby/with-feature
+ 'sticky-windows
+ (global-set-key "\C-x0" 'sticky-window-delete-window)
+ (global-set-key "\C-x1" 'sticky-window-delete-other-windows)
+ (global-set-key "\C-x9" 'sticky-window-keep-window-visible))
+
 ;;; ui.el ends here

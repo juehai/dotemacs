@@ -75,6 +75,9 @@
 	    (read-only (if buffer-read-only
 			   (powerline-raw " RO " flag-face)
 			 (powerline-raw "    " nil)))
+	    (sticky (if (window-dedicated-p)
+			(powerline-raw " ST " flag-face)
+		      (powerline-raw "    " nil)))
 	    (minor-modes (powerline-minor-modes face2))
 
 	    (lhs (list
@@ -95,6 +98,7 @@
 		     " "
 		     (powerline-vc)
 		     " "
+		     sticky
 		     read-only
 		     (propertize narrow 'face (when (powerline-narrow) flag-face)))))
        (concat (powerline-render lhs)
