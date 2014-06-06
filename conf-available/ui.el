@@ -176,9 +176,9 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (nby/with-feature
- 'sticky-windows
- (global-set-key "\C-x0" 'sticky-window-delete-window)
- (global-set-key "\C-x1" 'sticky-window-delete-other-windows)
- (global-set-key "\C-x9" 'sticky-window-keep-window-visible))
+ 'sticky-windows-plus
+; (global-set-key "\C-x0" 'sticky-window-delete-window)
+; (global-set-key "\C-x1" 'sticky-window-delete-other-windows)
+ (global-set-key "\C-x9" 'sticky-windows-plus-toggle))
 
 ;;; ui.el ends here
