@@ -108,7 +108,7 @@
 	       (powerline-render rhs))))))
 
  (nby/with-feature
-  'tomorrow-night-theme
+  'color-theme-tomorrow
   (color-theme-tomorrow--with-colors
    'night
    (custom-set-faces

@@ -15,17 +15,16 @@
   (interactive)
   (set-window-dedicated-p
    (selected-window)
-   (not (window-dedicated-p (selected-window)))))
+   (not (window-dedicated-p (selected-window))))
+  (setq window-size-fixed
+	(if (window-dedicated-p (selected-window)) t nil)))
 
 
 (defadvice delete-window (around sticky-windows-plus-delete-window activate)
   "Avoids windows with sticky-bit to be deleted."
   (interactive)
   (let ((window (selected-window)))
-    (if (window-dedicated-p (selected-window))
-	(error (concat "Window with sticky-bit cannot be deleted."
-		       "Please use `sticky-windows-plus-toggle` "
-		       "to unstick it first."))
+    (unless (window-dedicated-p (selected-window))
       ad-do-it)))
 
 (defadvice delete-other-windows
