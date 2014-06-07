@@ -26,7 +26,7 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(nby/with-feature 'pymacs)
+;(nby/with-feature 'pymacs)
 
 (nby/with-feature
  'python-mode
@@ -38,10 +38,10 @@
    (nby/whitespace-detection-mode 'python-mode :tab t)
    (nby/log-warn "whitespace detection failed to start in python-mode"))
 
- (nby/with-feature
-  'auto-complete
-  (unless (require 'auto-complete-pycomplete nil t)
-    (nby/log-warn "auto-complete-pycomplete failed to load")))
+ ;; (nby/with-feature
+ ;;  'auto-complete
+ ;;  (unless (require 'auto-complete-pycomplete nil t)
+ ;;    (nby/log-warn "auto-complete-pycomplete failed to load")))
 
  ;; do not start python shell at start
  (custom-set-variables
@@ -62,12 +62,11 @@
        '(py-indent-offset     nby/python-indentation-size)
        '(indent-tabs-mode     nil))
       ;; FIXME: smart indentation may cause python-mode hang
-      (py-smart-indentation-off)
-      (add-to-list 'ac-sources 'ac-source-pycomplete)
+      (py-smart-indentation-on)
       (add-to-list 'ac-sources 'ac-source-yasnippet)
-      (nby/with-feature
-       'auto-complete
-       (add-to-list 'ac-sources 'ac-source-pycomplete))
+;;      (nby/with-feature
+;;       'auto-complete
+;;       (add-to-list 'ac-sources 'ac-source-pycomplete))
       (local-set-key (kbd "C-c C-c") 'eval-buffer-as-python))))
 
 
@@ -82,10 +81,10 @@
  (nby/with-feature
   'jedi
 ;  (autoload 'jedi:setup "jedi" nil t)
-  (custom-set-variables
-   '(jedi:setup-keys nil)
-   '(jedi:complete-on-dot t))
-  (add-hook 'python-mode-hook 'jedi:setup)))
+  (add-hook 'python-mode-hook 'jedi:setup)
+  (setq jedi:setup-keys t
+	jedi:complete-on-dot t)))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
