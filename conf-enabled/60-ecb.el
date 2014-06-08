@@ -1,1 +1,0 @@
-../conf-available/ecb.el
