@@ -27,6 +27,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;(nby/with-feature 'pymacs)
+(nby/with-feature 'virtualenvwrapper)
 
 (nby/with-feature
  'python-mode
@@ -80,9 +81,8 @@
  'python-mode
  (nby/with-feature
   'jedi
-;  (autoload 'jedi:setup "jedi" nil t)
   (add-hook 'python-mode-hook 'jedi:setup)
-  (setq jedi:setup-keys t
+  (setq jedi:setup-keys nil
 	jedi:complete-on-dot t)))
 
 
