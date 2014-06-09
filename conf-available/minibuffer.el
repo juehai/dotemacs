@@ -17,6 +17,10 @@
   '(ido-max-directory-size 100000))
  (ido-mode t))
 
+(nby/with-feature
+ 'ido-vertical-mode
+ (ido-vertical-mode 1))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
