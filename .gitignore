@@ -7,3 +7,7 @@ auto-save-list
 el-get
 url
 newsticker
+session.*
+.python-environments
+elpa/
+request/
