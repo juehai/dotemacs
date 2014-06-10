@@ -26,6 +26,9 @@
 ;; delete trailing whitespace, hope it's safe
 (add-hook 'before-save-hook #'(lambda () (delete-trailing-whitespace)))
 
+;; dont use tabe in most cases
+(setq-default indent-tabs-mode nil)
+
 ;; indent & unindent
 (global-set-key "\C-c>" 'nby/indent-region)
 (global-set-key "\C-c<" 'nby/unindent-region)
@@ -80,25 +83,28 @@
  'magit
  (global-set-key "\C-cg" 'magit-status))
 
-(nby/with-feature
- 'git-gutter
- (global-git-gutter-mode +1)
- (setq git-gutter:modified-sign "  " ;; two space
-       git-gutter:added-sign "++"    ;; multiple character is OK
-       git-gutter:deleted-sign "--")
- (color-theme-tomorrow--with-colors
-  'night
-  (set-face-foreground 'git-gutter:modified "yellow")
-  (set-face-foreground 'git-gutter:added    "green")
-  (set-face-foreground 'git-gutter:deleted  "red")))
+(nby/with-feature 'fringe-helper)
 
 (nby/with-feature
- 'git-gutter-fringe
+ 'git-gutter+
+ (setq git-gutter+-modified-sign "  " ;; two space
+       git-gutter+-added-sign "++"    ;; multiple character is OK
+       git-gutter+-deleted-sign "--")
  (color-theme-tomorrow--with-colors
   'night
-  (set-face-foreground 'git-gutter-fr:modified yellow)
-  (set-face-foreground 'git-gutter-fr:added    green)
-  (set-face-foreground 'git-gutter-fr:deleted  red)))
+  (set-face-foreground 'git-gutter+-modified yellow)
+  (set-face-foreground 'git-gutter+-added    green)
+  (set-face-foreground 'git-gutter+-deleted  red))
+ (global-git-gutter+-mode t))
+
+(nby/with-feature
+ 'git-gutter-fringe+
+ (color-theme-tomorrow--with-colors
+  'night
+  (set-face-foreground 'git-gutter-fr+-modified yellow)
+  (set-face-foreground 'git-gutter-fr+-added    green)
+  (set-face-foreground 'git-gutter-fr+-deleted  red)))
+
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
