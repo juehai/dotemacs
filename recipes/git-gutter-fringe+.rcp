@@ -1,0 +1,4 @@
+(:name git-gutter-fringe+
+ :description "git-gutter-fringe+.el uses the fringe to display diff markers, instead of the buffer margin."
+ :type elpa
+ :features git-gutter-fringe+)
