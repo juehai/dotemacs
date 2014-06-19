@@ -65,15 +65,24 @@ exist."
   "Require a FEATURE.  If not exist install it by el-get.
 If PACKAGE-NAME specified, install PACKAGE-NAME and require FEATURE."
   (let ((package (if package-name package-name feature)))
-    (nby/log-info "finding %s from %s" feature package)
-    (nby/add-to-load-path (nby/path-join "lisp/vendor" (symbol-name feature)) t)
-    (unless (require feature nil t)
-      (if (el-get-recipe-filename package)
-	  (nby/el-get-install package)
-	(progn
-	  (nby/log-warn "No recipe for feature %s"
-			feature)
-	  nil)))))
+    (if (eq nby/packaging-system 'el-get)
+        (progn
+          (nby/log-info "finding %s from %s (el-get)" feature package)
+          (nby/add-to-load-path (nby/path-join "lisp/vendor" (symbol-name feature)) t)
+          (unless (require feature nil t)
+            (if (el-get-recipe-filename package)
+                (nby/el-get-install package)
+              (progn
+                (nby/log-warn "No recipe for feature %s"
+                              feature)
+                nil))))
+      (progn
+        (nby/log-info "finding %s from %s (elpa)" feature package)
+        (unless (require feature nil t)
+          (if (assq package package-archive-contents)
+              (package-install package)
+            (nby/log-warn "%s not available in ELPA repos" package))))
+        )))
 
 (defmacro nby/with-feature (feature &rest body)
   "When FEATURE is provided, execute BODY."
