@@ -38,7 +38,6 @@
   '(mu4e-view-show-images t)              ;; display inline image
   '(mu4e-confirm-quit nil)                ;; dont ask when quit
   '(message-kill-buffer-on-exit t)        ;; don't keep message buffers around
-  '(org-mu4e-conver-to-html t)
   `(smtpmail-queue-dir ,(nby/path-join mu4e-maildir "local" "queue"))
   '(mu4e-html2text-command "html2text -utf8 -width 72"))
  (when (fboundp 'imagemagick-register-types) (imagemagick-register-types)))
