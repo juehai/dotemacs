@@ -12,7 +12,9 @@
           (yas-indent-line nil))
       (when is-new-file
         (goto-char old-point-max)
-        (yas-expand-snippet (buffer-substring-no-properties (point-min) (point-max)))
+        (nby/with-feature
+         'yasnippet
+         (yas-expand-snippet (buffer-substring-no-properties (point-min) (point-max))))
         (delete-region (point-min) old-point-max)))))
 
 

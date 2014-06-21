@@ -18,7 +18,9 @@
       (kill-line)
       (next-line)
       (save-excursion
-        (boxquote-region (point) (point-max)))
+        (nby/with-feature
+         'boxquote
+         (boxquote-region (point) (point-max))))
       (move-end-of-line nil)
       (insert " Tip of the day: ")
       (yank)
