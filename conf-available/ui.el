@@ -28,12 +28,10 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defvar nby/x-font-latin
-  "monofur-12:Bold"
+(defvar nby/x-font-latin nil
   "Font for english characters.")
 
-(defvar nby/x-font-cjk
-  "monofur-12:Bold"
+(defvar nby/x-font-cjk nil
   "Font for CJK characters.")
 
 ;; set xft font when we are using window system
@@ -41,11 +39,14 @@
   (nby/log-info "set latin font to '%s', set cjk font to '%s'"
                 nby/x-font-latin
                 nby/x-font-cjk)
-  (set-face-attribute 'default nil :font nby/x-font-latin)
-  (dolist (charset '(kana han symbol cjk-misc bopomofo))
-    (set-fontset-font (frame-parameter nil 'font)
-                      charset
-                      nby/x-font-cjk)))
+  (if nby/x-font-latin
+      (set-face-attribute 'default nil :font nby/x-font-latin))
+
+  (if nby/x-font-cjk
+      (dolist (charset '(kana han symbol cjk-misc bopomofo))
+        (set-fontset-font (frame-parameter nil 'font)
+                          charset
+                          nby/x-font-cjk))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; Locale
