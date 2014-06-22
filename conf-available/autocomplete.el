@@ -13,10 +13,7 @@
 
 (nby/with-feature
  'yasnippet
- (custom-set-variables
-  '(yas-snippet-dirs
-       `(,(nby/build-relative-path "snippets")
-         ,(nby/build-relative-path "el-get/yasnippet/snippets"))))
+ (add-to-list 'yas-snippet-dirs (nby/build-relative-path "snippets"))
  (yas-global-mode t))
 (nby/with-feature 'auto-complete-yasnippet)
 
