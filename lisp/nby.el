@@ -103,6 +103,12 @@ If PACKAGE-NAME specified, install PACKAGE-NAME and require FEATURE."
      ,@(mapcar #'(lambda (x) `(set (make-local-variable (quote ,(car (cadr x)))) ,(cadr (cadr x)))) pairs)))
 
 
+(defmacro nby/with-current-theme-colors (&rest body)
+  "Execute BODY With current theme colors in context."
+  `(nby/with-feature 'tomorrow-night-theme
+    (color-theme-tomorrow--with-colors 'night ,@body)))
+
+
 
 ;;; build some log functions
 (nby/make-log "info")

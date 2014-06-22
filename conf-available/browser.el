@@ -18,12 +18,9 @@
  (setq newsticker-url-list-defaults nil)
  (global-set-key (kbd "C-c r") 'newsticker-treeview)
 
- (nby/with-feature
-  'tomorrow-night-theme
-  (color-theme-tomorrow--with-colors
-   'night
-   (custom-set-faces
-    `(w3m-anchor ((t (:foreground ,blue))))
-    `(w3m-current-anchor ((t (:foreground ,blue))))))))
+ (nby/with-current-theme-colors
+  (custom-set-faces
+   `(w3m-anchor ((t (:foreground ,blue))))
+   `(w3m-current-anchor ((t (:foreground ,blue)))))))
 
 ;;; browser.el ends here

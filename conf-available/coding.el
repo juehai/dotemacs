@@ -90,24 +90,18 @@
  (setq git-gutter+-modified-sign "  " ;; two space
        git-gutter+-added-sign "++"    ;; multiple character is OK
        git-gutter+-deleted-sign "--")
- (nby/with-feature
-  'tomorrow-night-theme
-  (color-theme-tomorrow--with-colors
-   'night
-   (set-face-foreground 'git-gutter+-modified yellow)
-   (set-face-foreground 'git-gutter+-added    green)
-   (set-face-foreground 'git-gutter+-deleted  red)))
+ (nby/with-current-theme-colors
+  (set-face-foreground 'git-gutter+-modified yellow)
+  (set-face-foreground 'git-gutter+-added    green)
+  (set-face-foreground 'git-gutter+-deleted  red))
  (global-git-gutter+-mode t))
 
 (nby/with-feature
  'git-gutter-fringe+
- (nby/with-feature
-  'tomorrow-night-theme
-  (color-theme-tomorrow--with-colors
-   'night
-   (set-face-foreground 'git-gutter-fr+-modified yellow)
-   (set-face-foreground 'git-gutter-fr+-added    green)
-   (set-face-foreground 'git-gutter-fr+-deleted  red))))
+ (nby/with-current-theme-colors
+  (set-face-foreground 'git-gutter-fr+-modified yellow)
+  (set-face-foreground 'git-gutter-fr+-added    green)
+  (set-face-foreground 'git-gutter-fr+-deleted  red)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
