@@ -106,6 +106,7 @@
           (tomorrow-night-theme-patched)
         (progn
           (nby/log-info "using color theme: tty-dark")
+          (color-theme-initialize)
           (color-theme-tty-dark))))))
 
 

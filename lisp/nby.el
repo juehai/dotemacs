@@ -58,7 +58,18 @@ exist."
   (condition-case nil
       (el-get 'sync `(,feature))
     (error (progn
-             (nby/log-warn "Feature %s cannot be installed" feature)
+             (nby/log-warn "Feature %s cannot be installed using el-get"
+                           feature)
+             nil))))
+
+
+(defun nby/package-install (feature)
+  "Install FEATURE by el-get and return nil if installation failed."
+  (condition-case nil
+      (package-install feature)
+    (error (progn
+             (nby/log-warn "Feature %s cannot be installed using elpa"
+                           feature)
              nil))))
 
 (defun* nby/require (feature &key (package-name nil))
@@ -80,7 +91,7 @@ If PACKAGE-NAME specified, install PACKAGE-NAME and require FEATURE."
         (nby/log-info "finding %s from %s (elpa)" feature package)
         (unless (require feature nil t)
           (if (assq package package-archive-contents)
-              (package-install package)
+              (nby/package-install package)
             (nby/log-warn "%s not available in ELPA repos" package))))
         )))
 
