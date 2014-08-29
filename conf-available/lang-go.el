@@ -12,7 +12,7 @@
              (file-exists-p nby/golang-directory))
     nby/golang-directory
     (progn
-      (dolist (dir '("/opt/go" "/usr/local/go" "/usr/bin"))
+      (dolist (dir '("/opt/go" "/usr/local/go" "/usr"))
         (let ((go-executable (nby/path-join dir "bin" "go")))
           (when (file-exists-p go-executable)
                 (return (nby/path-join dir "bin"))))))))
@@ -23,6 +23,8 @@
   (save-buffer)
   (compilation-start
    (concat (nby/path-join (nby/find-golang) "go") " run " (buffer-file-name))))
+
+(nby/with-feature 'go-autocomplete)
 
 (nby/with-feature
  'go-mode
