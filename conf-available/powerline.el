@@ -42,8 +42,8 @@
 	    org-clock-current-task)
        (replace-regexp-in-string
 	"\\[\\|\\]" ""
-	(org-clock-get-clock-string))
-     "Clock: off"))
+	(concat " " (org-clock-get-clock-string) " "))
+     " Clock: off "))
 
  (setq-default
   mode-line-format
