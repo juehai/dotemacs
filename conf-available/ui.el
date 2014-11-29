@@ -21,6 +21,7 @@
  '(blink-cursor-mode   nil)                ;; Stop cursor blinking
  '(inhibit-startup-message t))             ;; disable splash screen
 
+(nby/add-to-load-path "themes")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -94,16 +95,23 @@
      `(org-hide (( t (:background ,background :foreground ,background))))))))
 
 
+(defun monokai-theme-patched ()
+  "Apply monokai theme with custom fixes"
+  (nby/with-feature
+   'monokai-theme))
+
+
 (if nby/disable-color-theme
     (nby/log-info "color-theme has been disabled by configuration")
   (progn
     ;; install required package first
     (nby/with-feature
      'color-theme
-     (nby/require 'tomorrow-theme)
+     ;(nby/require 'tomorrow-theme)
       ;; enable color-theme
       (if window-system
-          (tomorrow-night-theme-patched)
+          (monokai-theme-patched)
+          ;; (tomorrow-night-theme-patched)
         (progn
           (nby/log-info "using color theme: tty-dark")
           (color-theme-initialize)
@@ -177,10 +185,11 @@
 ;; Sticky Window
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(nby/with-feature
- 'sticky-windows-plus
+; this feature makes C-x 1 behave weird
+;(nby/with-feature
+; 'sticky-windows-plus
 ; (global-set-key "\C-x0" 'sticky-window-delete-window)
 ; (global-set-key "\C-x1" 'sticky-window-delete-other-windows)
- (global-set-key "\C-x9" 'sticky-windows-plus-toggle))
+; (global-set-key "\C-x9" 'sticky-windows-plus-toggle))
 
 ;;; ui.el ends here
