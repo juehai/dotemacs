@@ -43,11 +43,13 @@ is considered to be a project root."
 
 (defun nby/python-project-name (buffer-name)
   "Returns the name of the project that contains the given buffer."
-  (let ((root-dir (nby/python-project-directory buffer-name)))
-    (if root-dir
-        (file-name-nondirectory
-         (directory-file-name root-dir))
-      nil)))
+  (if buffer-name
+      (let ((root-dir (nby/python-project-directory buffer-name)))
+        (if root-dir
+            (file-name-nondirectory
+             (directory-file-name root-dir))
+          nil))
+    nil))
 
 (defun nby/jedi-setup-venv ()
   "Activates the virtualenv of the current buffer."
