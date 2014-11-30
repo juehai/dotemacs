@@ -16,10 +16,22 @@
 (defvar user-local-file (concat user-home-dir "/.userlocal.el"))
 (setq custom-file user-custom-file)
 
+;;; Set ELPA sources before loading packages
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "https://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+
 (require 'nby (concat user-conf-dir "/lisp/nby.el"))
 
 ;; load user info before everything
 (nby/load user-info-file)
+
+;; initialize packaging system
+(if (eq nby/packaging-system 'elpa)
+  (progn
+    (package-initialize)
+    (unless (file-exists-p (nby/path-join user-conf-dir "elpa"))
+      (package-refresh-contents))))
 
 ;; Add common search path
 (nby/add-to-load-path "lisp/site-lisp")
