@@ -89,6 +89,7 @@ If PACKAGE-NAME specified, install PACKAGE-NAME and require FEATURE."
                 nil))))
       (progn
         (nby/log-info "finding %s from %s (elpa)" feature package)
+        (nby/add-to-load-path (nby/path-join "lisp/vendor" (symbol-name feature)) t)
         (unless (require feature nil t)
           (if (assq package package-archive-contents)
               (nby/package-install package)
