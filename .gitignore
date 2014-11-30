@@ -11,3 +11,4 @@ session.*
 .python-environments
 elpa/
 request/
+projectile-bookmarks.eld
