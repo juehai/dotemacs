@@ -92,35 +92,37 @@
 selected task.  If no task is selected set the Organization task
 as the default task."
   (interactive "p")
-  (setq bh/keep-clock-running t)
-  (if (equal major-mode 'org-agenda-mode)
+  (when bh/organization-task-id
+    (setq bh/keep-clock-running t)
+    (if (equal major-mode 'org-agenda-mode)
+        ;;
+        ;; We're in the agenda
+        ;;
+        (let* ((marker (org-get-at-bol 'org-hd-marker))
+               (tags (org-with-point-at marker (org-get-tags-at))))
+          (if (and (eq arg 4) tags)
+              (org-agenda-clock-in '(16))
+            (bh/clock-in-organization-task-as-default)))
       ;;
-      ;; We're in the agenda
+      ;; We are not in the agenda
       ;;
-      (let* ((marker (org-get-at-bol 'org-hd-marker))
-             (tags (org-with-point-at marker (org-get-tags-at))))
-        (if (and (eq arg 4) tags)
-            (org-agenda-clock-in '(16))
-          (bh/clock-in-organization-task-as-default)))
-    ;;
-    ;; We are not in the agenda
-    ;;
-    (save-restriction
-      (widen)
-      ;; Find the tags on the current task
-      (if (and (equal major-mode 'org-mode) (not (org-before-first-heading-p)) (eq arg 4))
-          (org-clock-in '(16))
-        (bh/clock-in-organization-task-as-default)))))
+      (save-restriction
+        (widen)
+        ;; Find the tags on the current task
+        (if (and (equal major-mode 'org-mode) (not (org-before-first-heading-p)) (eq arg 4))
+            (org-clock-in '(16))
+          (bh/clock-in-organization-task-as-default))))))
 
 (defun bh/punch-out ()
   (interactive)
-  (setq bh/keep-clock-running nil)
-  (when (org-clock-is-active)
+  (when bh/organization-task-id
+    (setq bh/keep-clock-running nil)
+    (when (org-clock-is-active)
 ;    (save-restriction
 ;      (org-clock-goto)
 ;      (setq bh/organization-task-id (org-id-get-create)))
-    (org-clock-out))
-  (org-agenda-remove-restriction-lock))
+      (org-clock-out))
+    (org-agenda-remove-restriction-lock)))
 
 (defvar bh/organization-task-id nil)
 
