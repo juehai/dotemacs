@@ -6,6 +6,7 @@
 
 (defvar user-home-dir (getenv "HOME"))
 (defvar user-conf-dir (concat user-home-dir "/.emacs.d"))
+(defvar nby/packaging-system 'elpa)
 
 (defmacro nby/make-log (tag)
   "Make a log function outputs log with TAG as prefix."
