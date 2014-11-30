@@ -16,7 +16,8 @@
 (nby/with-feature
  'pylookup
  (custom-set-variables
-  `(pylookup-db-file ,(nby/build-relative-path "/db/pylookup.db")))
+  `(pylookup-db-file ,(nby/build-relative-path "/db/pylookup.db"))
+  `(pylookup-program ,(nby/build-relative-path "/lisp/vendor/pylookup/pylookup.py")))
  (global-set-key "\C-ch" 'pylookup-lookup))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
