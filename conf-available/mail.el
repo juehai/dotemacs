@@ -106,4 +106,26 @@
        (error "No email account found"))))
  (add-hook 'mu4e-compose-pre-hook 'nby/mu4e-set-account))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Mail Signatures
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; mail signature {{{
+(defun random-cow-style()
+  (let* ((cow-styles (remove-if
+		      #'(lambda (x) (string-match "^\\." x))
+		      (directory-files "~/.emacs.d/cows")))
+	 (cow-style (nth (random (length cow-styles)) cow-styles)))
+    (nby/path-join "~/.emacs.d/cows" cow-style)))
+
+(defun fortune-signature ()
+  (let ((cow-style (random-cow-style)))
+    (shell-command-to-string (format "fortune debian-hints ubuntu-server-tips | cowsay -f %s" cow-style))))
+;; }}}
+
+
+
+
 ;;; mails.el ends here
