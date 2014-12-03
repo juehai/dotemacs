@@ -192,4 +192,12 @@
 ; (global-set-key "\C-x1" 'sticky-window-delete-other-windows)
 ; (global-set-key "\C-x9" 'sticky-windows-plus-toggle))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; dired+
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(nby/with-feature 'dired+)
+
 ;;; ui.el ends here
