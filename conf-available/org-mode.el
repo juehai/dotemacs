@@ -21,7 +21,6 @@
 ;; Org-mode Standard key bindings
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cb" 'org-iswitchb)
 (global-set-key (kbd "C-<escape>") 'org-clock-goto)
 (global-set-key (kbd "C-M-r") 'org-capture)
 
