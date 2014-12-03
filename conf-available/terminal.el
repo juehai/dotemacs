@@ -35,20 +35,12 @@
  '(ansi-color-for-comint-mode t))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;; Terminal using Anything
+;; Terminal using Helm
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (nby/with-feature
- 'anything
-
- (defvar anything-c-source-terminal
-   '((name . "Terminals")
-     (candidates . nby/shell-buffers)
-     (volatile)
-     (action . (lambda (name) (switch-to-buffer name)))
-     (type . string)))
-
+ 'helm
 
  (defun nby/new-shell ()
    "Create a new shell buffer."
@@ -60,19 +52,16 @@
    (remove-if-not (lambda (x) (string-match "^\\*shell:" x))
                   (mapcar 'buffer-name (buffer-list))))
 
- (defun nby/anything-terminals (arg)
+
+ (defun nby/helm-terminals (arg)
    (interactive "p")
    (cond
     ((> arg 1) (nby/new-shell))
     ((= (length (nby/shell-buffers)) 0) (nby/new-shell))
     ((= (length (nby/shell-buffers)) 1)
      (switch-to-buffer (car (nby/shell-buffers))))
-    (t (anything
-        :prompt "Terminals: "
-        :candidate-number-limit 100
-        :sources '(anything-c-source-terminal)))))
+    (t (switch-to-buffer (helm-comp-read "Switch to Terminal: " (nby/shell-buffers))))))
 
-
- (global-set-key (kbd "C-z") 'nby/anything-terminals))
+ (global-set-key (kbd "C-z") 'nby/helm-terminals))
 
 ;;; terminal.el ends here

@@ -18,7 +18,7 @@
  (custom-set-variables
   `(pylookup-db-file ,(nby/build-relative-path "/db/pylookup.db"))
   `(pylookup-program ,(nby/build-relative-path "/lisp/vendor/pylookup/pylookup.py")))
- (global-set-key "\C-ch" 'pylookup-lookup))
+ (global-set-key "\C-chp" 'pylookup-lookup))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;

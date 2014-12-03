@@ -17,21 +17,16 @@
 
  (defvar sql-connection-alist "" nil)
 
- (defvar anything-c-source-database
-       `((name . "Available databases")
-         (candidates . nby/sql-databases)
-         (volatile)
-         (action . (lambda (name) (sql-connect name name)))
-         (type . string)))
-
  (defun nby/sql-databases ()
    (mapcar #'(lambda (x) (car x)) sql-connection-alist))
 
- (defun nby/sql-connect ()
-   (interactive)
-   (anything
-    :prompt "Connect to database: "
-    :candidate-number-limit 100
-    :sources '(anything-c-source-database))))
+ (nby/with-feature
+  'helm
+  (defun nby/sql-connect ()
+    "Connect to the input server using my-sql-servers-list"
+    (interactive)
+    (let ((dbname (helm-comp-read "Select SQL server: " (nby/sql-databases))))
+      (sql-connect dbname dbname)))))
+
 
 ;;; sql.el ends here
