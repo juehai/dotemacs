@@ -13,8 +13,6 @@
 
 (nby/with-feature 'bs (global-set-key "\C-x\C-b" 'bs-show))
 
-(global-set-key "\C-o" 'nby/occurs)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;  Helm
