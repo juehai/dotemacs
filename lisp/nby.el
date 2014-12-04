@@ -43,7 +43,7 @@ exist."
 
 (defun nby/build-relative-path (&rest args)
   "Build a path by ARGS."
-  (apply #'nby/path-join user-conf-dir args))
+  (expand-file-name (apply #'nby/path-join user-conf-dir args)))
 
 
 (defun nby/load (filename)
