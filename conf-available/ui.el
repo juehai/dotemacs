@@ -25,15 +25,25 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;; Fonts
+;; Fonts: The following is for chinese-english width testing
+;;
+;; | 中文        | English     | 中文English | English中文 |
+;; |-------------+-------------+-------------+-------------|
+;; | English     | 中文English | English中文 | 中文        |
+;; | 中文English | English中文 | 中文        | English     |
+;; | English中文 | 中文        | English     | 中文English |
+;;
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defvar nby/x-font-latin nil
+(defvar nby/x-font-latin "Sans"
   "Font for english characters.")
 
-(defvar nby/x-font-cjk nil
+(defvar nby/x-font-cjk "Sans"
   "Font for CJK characters.")
+
+(defvar nby/chinese-font-scale 1.2
+  "Rescale value for chinese to match latin fonts")
 
 ;; set xft font when we are using window system
 (when window-system
@@ -42,6 +52,9 @@
                 nby/x-font-cjk)
   (if nby/x-font-latin
       (set-face-attribute 'default nil :font nby/x-font-latin))
+
+  ;; refer to http://baohaojun.github.io/perfect-emacs-chinese-font.html
+  (setq face-font-rescale-alist `((nby/x-font-cjk . ,nby/chinese-font-scale)))
 
   (if nby/x-font-cjk
       (dolist (charset '(kana han symbol cjk-misc bopomofo))
