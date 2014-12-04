@@ -2,6 +2,8 @@
 ;;; Commentary:
 ;;; Code:
 
-(nby/with-feature 'latex-preview-pane)
+(nby/with-feature
+ 'latex-preview-pane
+ (setq pdf-latex-command "xelatex"))
 
 ;;; ends here
