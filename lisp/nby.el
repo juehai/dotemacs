@@ -5,7 +5,7 @@
 (require 'cl)
 
 (defvar user-home-dir (getenv "HOME"))
-(defvar user-conf-dir (concat user-home-dir "/.emacs.d"))
+(defvar user-conf-dir user-emacs-directory)
 (defvar nby/packaging-system 'elpa)
 
 (defmacro nby/make-log (tag)
