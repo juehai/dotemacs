@@ -129,6 +129,10 @@
 
 (nby/with-feature
  'projectile
+ (setq
+  projectile-cache-file (nby/build-relative-path "db/projectile.cache")
+  projectile-known-projects-file (nby/build-relative-path "db/projectile-bookmarks.eld"))
+ (nby/with-feature 'helm (helm-projectile-on))
  (projectile-global-mode t))
 
 ;;; coding.el ends here
