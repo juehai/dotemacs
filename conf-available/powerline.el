@@ -37,6 +37,11 @@
    "Powerline clock inactive face."
    :group 'powerline)
 
+ (defface powerline-symbol '((t (:family "Devil Inside")))
+   "Powerline default symbol face."
+   :group 'powerline)
+
+
  (defpowerline powerline-org-task
    (if (and (boundp 'org-clock-current-task)
 	    org-clock-current-task)
@@ -45,6 +50,7 @@
 	(concat " " (org-clock-get-clock-string) " "))
      " Clock: off "))
 
+ (nby/with-feature 'nyan-mode)
  (setq-default
   mode-line-format
   '("%e"
@@ -91,7 +97,11 @@
 		       (funcall separator-right mode-line-face clock-face)
 		       (powerline-raw (propertize (powerline-org-task) 'face clock-face) clock-face)
 		       (funcall separator-right clock-face face1)
-		       (powerline-raw (format-time-string " % %Y-%m-%d %a %H:%M ") face1))
+		       ;; (powerline-raw (format-time-string " % %Y-%m-%d %a %H:%M ") face1)
+		       (propertize " b " 'face 'powerline-symbol)
+                       (nyan-create)
+		       (propertize " c " 'face 'powerline-symbol)
+                       )
 		    '("")))
 	    (center (list
 		     (powerline-raw "%b @ %l:%c" modified)
@@ -128,6 +138,7 @@
  ;;   `(powerline-inactive2 ((t (:foreground "grey44" :background "grey15"))))))
 
  (nby/with-current-theme-colors
+  ;(set-face-attribute 'mode-line nil :family "Hannotate SC")
   (set-face-attribute 'powerline-modified-bound-warning nil :background yellow :foreground background)
   (set-face-attribute 'powerline-clock-inactive nil :background orange :foreground background)
   (set-face-attribute 'powerline-clock-active nil :background green :foreground background)
