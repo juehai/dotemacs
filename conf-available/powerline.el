@@ -87,7 +87,9 @@
 	    (minor-modes (powerline-minor-modes face2))
 
 	    (lhs (list
+                  (propertize " e" 'face 'powerline-symbol)
 		  (propertize (concat " " (powerline-major-mode face1) " ") 'face face1)
+                  (propertize "e " 'face 'powerline-symbol)
 		  (funcall separator-left face1 face2)
 		  (propertize (concat " " minor-modes " ") 'face face2)
 		  (funcall separator-left face2 mode-line-face)))
@@ -104,7 +106,9 @@
                        )
 		    '("")))
 	    (center (list
+                     (propertize " g " 'face 'powerline-symbol)
 		     (powerline-raw "%b @ %l:%c" modified)
+                     (propertize " g " 'face 'powerline-symbol)
 		     " "
 		     (powerline-vc)
 		     " "
