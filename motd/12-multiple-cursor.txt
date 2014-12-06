@@ -1,0 +1,4 @@
+Use multiple-cursor to edit multiple lines simultaneously,
+
+  * select a region and press C-S-c C-S-c to mark it for multi-cursor editing
+  * edit one line and enjoy the magic
