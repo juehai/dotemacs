@@ -9,6 +9,28 @@
                      (color-theme-tomorrow--with-colors 'night ,@body)))
 
 
+(defmacro nby/with-solarized-light-theme-colors (&rest body)
+  `(which-flet ((find-color (name)
+                            (let ((index (if window-system
+                                             (if solarized-degrade
+                                                 3
+                                               (if solarized-broken-srgb 2 1))
+                                           (case (display-color-cells)
+                                             (16 4)
+                                             (8  5)
+                                             (otherwise 3)))))
+                              (nth index (assoc name solarized-colors)))))
+     (let ((yellow      (find-color 'yellow))
+           (orange      (find-color 'orange))
+           (red         (find-color 'red))
+           (magenta     (find-color 'magenta))
+           (violet      (find-color 'violet))
+           (blue        (find-color 'blue))
+           (cyan        (find-color 'cyan))
+           (green       (find-color 'green))
+           )
+       ,@body)))
+
 (defmacro nby/with-monokai-theme-colors (&rest body)
   "Execute BODY With current theme colors in context."
   `(let* (
@@ -21,34 +43,7 @@
           (blue                     "#66D9EF")
           (cyan                     "#A1EFE4")
           (green                    "#A6E22E")
-          (gray                     "#474747")
-
-          ;; Darker and lighter accented colors
-          (yellow-d                 "#968B26")
-          (yellow-l                 "#F3EA98")
-          (orange-d                 "#A45E0A")
-          (orange-l                 "#FEB257")
-          (red-d                    "#A20C41")
-          (red-l                    "#FC5C94")
-          (magenta-d                "#A41F99")
-          (magenta-l                "#FE87F4")
-          (violet-d                 "#562AA6")
-          (violet-l                 "#C2A1FF")
-          (blue-d                   "#21889B")
-          (blue-l                   "#8DE6F7")
-          (cyan-d                   "#349B8D")
-          (cyan-l                   "#BBF7EF")
-          (green-d                  "#67930F")
-          (green-l                  "#C1F161")
-          (gray-d                   "#333333")
-          (gray-l                   "#6b6b6b")
-
-          ;; compatible with base16 definitions
-          (current-line             "#3E3D31")
-          (selection                "#49483E")
-          (comment                  "#75715E")
-          (foreground               "#F8F8F2")
-          (background               "#272822"))
+          (gray                     "#474747"))
      ,@body))
 
 (provide 'nby-theme-colors)

@@ -7,6 +7,7 @@
 (defvar user-home-dir (getenv "HOME"))
 (defvar user-conf-dir user-emacs-directory)
 (defvar nby/packaging-system 'elpa)
+(defvar nby/current-theme-colors 'nby/with-monokai-theme-colors)
 
 (defmacro nby/make-log (tag)
   "Make a log function outputs log with TAG as prefix."
@@ -120,7 +121,12 @@ If PACKAGE-NAME specified, install PACKAGE-NAME and require FEATURE."
   `(progn
      (nby/add-to-load-path "themes")
      (require 'nby-theme-colors)
-     (nby/with-monokai-theme-colors ,@body)))
+     (let* ((foreground  ,(face-attribute 'default :foreground))
+           (background   ,(face-attribute 'default :background))
+           (selection    ,(face-attribute 'highlight :background))
+           (comment      ,(face-attribute 'font-lock-comment-face :foreground))
+           (mode-line    ,(face-attribute 'mode-line :background)))
+       (,nby/current-theme-colors ,@body))))
 
 
 ;;; build some log functions

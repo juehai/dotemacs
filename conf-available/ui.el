@@ -79,40 +79,25 @@
   nil
   "Don't apply color theme.")
 
-
-(defun tomorrow-night-theme-patched ()
-  "Apply tommorrow night theme with custom fixes."
-  (nby/with-feature
-   'tomorrow-night-theme
-   (nby/log-info "using color theme: tomorrow-night with patch")
-   ;; patch some colors for other modes
-   (color-theme-tomorrow--with-colors
-    'night
-    (setq org-priority-faces
-	  `((?A . (:foreground ,background :background ,red :weight "bold"))))
-    (custom-set-variables
-     `(term-default-bg-color ,background)
-     `(term-default-fg-color ,foreground)
-     `(ansi-color-names-vector [,background ,red ,green ,yellow
-					    ,blue ,purple ,aqua ,foreground])
-     `(ansi-term-color-vector [,background ,red ,green ,yellow
-					   ,blue ,purple ,aqua ,foreground]))
-    (custom-set-faces
-     ;; FIXME: The following color settings for terminal seems not work
-     `(newsticker-treeview-selection-face (( t (:foreground ,blue :background "grey20"))))
-     `(ecb-default-highlight-face (( t (:foreground ,background :background ,orange))))
-     `(ecb-tag-header-face (( t (:foreground ,background :background ,blue))))
-     `(speedbar-tag-face (( t (:foreground ,yellow))))
-     `(bm-face (( t (:foreground ,background :background ,orange))))
-     `(highlight (( t (:foreground ,background))))
-     `(org-hide (( t (:background ,background :foreground ,background))))))))
-
-
-(defun monokai-theme-patched ()
+(defun load-monokai-theme ()
   "Apply monokai theme with custom fixes"
   (nby/with-feature
-   'monokai-theme))
+   'monokai-theme
+   (setq nby/current-theme-colors 'nby/with-monokai-theme-colors)))
 
+(defun load-solarized-light-theme ()
+  "Apply monokai theme with custom fixes"
+  (nby/with-feature
+   'solarized-light-theme
+   (color-theme-solarized-light)
+   (setq nby/current-theme-colors 'nby/with-solarized-light-theme-colors)))
+
+(defun load-solarized-dark-theme ()
+  "Apply monokai theme with custom fixes"
+  (nby/with-feature
+   'solarized-dark-theme
+   (color-theme-solarized-dark)
+   (setq nby/current-theme-colors 'nby/with-solarized-light-theme-colors)))
 
 (if nby/disable-color-theme
     (nby/log-info "color-theme has been disabled by configuration")
@@ -123,12 +108,10 @@
      ;(nby/require 'tomorrow-theme)
       ;; enable color-theme
       (if window-system
-          (monokai-theme-patched)
-          ;; (tomorrow-night-theme-patched)
-        (progn
-          (nby/log-info "using color theme: tty-dark")
-          (color-theme-initialize)
-          (color-theme-tty-dark))))))
+          (load-monokai-theme)
+          ;; (load-solarized-light-theme)
+          ;; (load-solarized-dark-theme)
+          (load-monokai-theme)))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -238,17 +221,20 @@
    "custom tabbar theme"
    (nby/with-current-theme-colors
     (dolist (face '(tabbar-default
+                    tabbar-highlight
                     tabbar-selected
                     tabbar-unselected
                     tabbar-selected-highlight
                     tabbar-unselected-highlight))
       (face-spec-reset-face face nil))
-    (set-face-attribute 'tabbar-default nil :box nil :family "Hannotate SC" :background current-line :foreground comment :height 0.9)
+    (setq tabbar-background-color mode-line)
+    (set-face-attribute 'tabbar-default nil :box nil :family "Hannotate SC" :background mode-line :foreground comment :height 0.9 :box mode-line)
+    (set-face-attribute 'tabbar-highlight nil :inherit nil :box nil)
     (set-face-attribute 'tabbar-separator nil :inherit 'tabbar-default)
-    (set-face-attribute 'tabbar-selected nil :inherit 'tabbar-default :foreground yellow :background background)
+    (set-face-attribute 'tabbar-selected nil :inherit 'tabbar-default :foreground yellow :background background :box background)
     (set-face-attribute 'tabbar-selected-modified nil :inherit 'tabbar-selected :weight 'ultra-bold :foreground yellow :background background)
-    (set-face-attribute 'tabbar-unselected nil :inherit 'tabbar-default :foreground comment)
-    (set-face-attribute 'tabbar-unselected-modified nil :inherit 'tabbar-unselected :weight 'ultra-bold :foreground comment)))
+    (set-face-attribute 'tabbar-unselected nil :inherit 'tabbar-default :foreground comment :background mode-line)
+    (set-face-attribute 'tabbar-unselected-modified nil :inherit 'tabbar-unselected :weight 'ultra-bold :foreground comment :background mode-line)))
 
  (nby/tabbar-install-faces)
  ;; group by projectile if we have projectile loadded

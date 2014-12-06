@@ -107,25 +107,37 @@
 	       (powerline-fill nil (powerline-width rhs))
 	       (powerline-render rhs))))))
 
+ ;; (nby/with-current-theme-colors
+ ;;  (custom-set-faces
+ ;;   `(mode-line
+ ;;     ((t (:background "grey15" :inherit mode-line))))
+ ;;   `(mode-line-inactive
+ ;;     ((t (:foreground "grey44" :inherit mode-line))))
+ ;;   `(powerline-inactive
+ ;;     ((t (:background "grey22" :inherit mode-line))))
+ ;;   `(powerline-modified-bound-warning
+ ;;     ((t(:background ,yellow :foreground ,background :inherit mode-line))))
+ ;;   `(powerline-clock-inactive
+ ;;     ((t (:background ,orange :foreground ,background :inherit mode-line))))
+ ;;   `(powerline-clock-active ((t (:background "grey19" :foreground ,yellow :inherit mode-line))))
+ ;;   `(powerline-flag-on
+ ;;     ((t (:background ,green :foreground ,background :inherit mode-line))))
+ ;;   `(powerline-active1 ((t (:background "grey23" :foreground ,blue :inherit mode-line))))
+ ;;   `(powerline-inactive1 ((t (:foreground "grey44" :background "grey19"))))
+ ;;   `(powerline-active2 ((t (:background "grey19" :foreground ,green :inherit mode-line))))
+ ;;   `(powerline-inactive2 ((t (:foreground "grey44" :background "grey15"))))))
+
  (nby/with-current-theme-colors
-  (custom-set-faces
-   `(mode-line
-     ((t (:background "grey15" :inherit mode-line))))
-   `(mode-line-inactive
-     ((t (:foreground "grey44" :inherit mode-line))))
-   `(powerline-inactive
-     ((t (:background "grey22" :inherit mode-line))))
-   `(powerline-modified-bound-warning
-     ((t(:background ,yellow :foreground ,background :inherit mode-line))))
-   `(powerline-clock-inactive
-     ((t (:background ,orange :foreground ,background :inherit mode-line))))
-   `(powerline-clock-active ((t (:background "grey19" :foreground ,yellow :inherit mode-line))))
-   `(powerline-flag-on
-     ((t (:background ,green :foreground ,background :inherit mode-line))))
-   `(powerline-active1 ((t (:background "grey23" :foreground ,blue :inherit mode-line))))
-   `(powerline-inactive1 ((t (:foreground "grey44" :background "grey19"))))
-   `(powerline-active2 ((t (:background "grey19" :foreground ,green :inherit mode-line))))
-   `(powerline-inactive2 ((t (:foreground "grey44" :background "grey15")))))))
+  (set-face-attribute 'powerline-modified-bound-warning nil :background yellow :foreground background)
+  (set-face-attribute 'powerline-clock-inactive nil :background orange :foreground background)
+  (set-face-attribute 'powerline-clock-active nil :background green :foreground background)
+  (set-face-attribute 'powerline-flag-on nil :background green :foreground background)
+  (set-face-attribute 'powerline-active1 nil :foreground blue :background mode-line)
+  (set-face-attribute 'powerline-inactive1 nil :foreground blue :background mode-line)
+  (set-face-attribute 'powerline-active2 nil :foreground green :background background)
+  (set-face-attribute 'powerline-inactive2 nil :foreground green :background background))
+
+)
 
 
 ;;; powerline.el ends here
