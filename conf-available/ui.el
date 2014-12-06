@@ -213,4 +213,51 @@
 
 (nby/with-feature 'dired+)
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; tabbar-ruler
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(nby/with-feature
+ 'tabbar-ruler
+
+ (setq tabbar-ruler-global-tabbar t
+       tabbar-ruler-global-ruler nil
+       tabbar-ruler-popup-menu nil
+       tabbar-ruler-popup-toolbar nil
+       tabbar-ruler-popup-scrollbar nil)
+
+ ;; disable default tabbar-install-faces
+ (defadvice tabbar-install-faces (around nby/tabbar-install-faces-advice activate)
+   "Avoids tabbar-ruler install its own faces."
+   (nby/tabbar-install-faces))
+
+ (defun nby/tabbar-install-faces ()
+   "custom tabbar theme"
+   (nby/with-current-theme-colors
+    (dolist (face '(tabbar-default
+                    tabbar-selected
+                    tabbar-unselected
+                    tabbar-selected-highlight
+                    tabbar-unselected-highlight))
+      (face-spec-reset-face face nil))
+    (set-face-attribute 'tabbar-default nil :box nil :family "Hannotate SC" :background current-line :foreground comment :height 0.9)
+    (set-face-attribute 'tabbar-separator nil :inherit 'tabbar-default)
+    (set-face-attribute 'tabbar-selected nil :inherit 'tabbar-default :foreground yellow :background background)
+    (set-face-attribute 'tabbar-selected-modified nil :inherit 'tabbar-selected :weight 'ultra-bold :foreground yellow :background background)
+    (set-face-attribute 'tabbar-unselected nil :inherit 'tabbar-default :foreground comment)
+    (set-face-attribute 'tabbar-unselected-modified nil :inherit 'tabbar-unselected :weight 'ultra-bold :foreground comment)))
+
+ (nby/tabbar-install-faces)
+ ;; group by projectile if we have projectile loadded
+ (nby/with-feature
+  'projectile
+  (tabbar-ruler-group-by-projectile-project))
+
+ (global-set-key (kbd "M-n") 'tabbar-forward-tab)
+ (global-set-key (kbd "M-p") 'tabbar-backward-tab))
+
+
 ;;; ui.el ends here
