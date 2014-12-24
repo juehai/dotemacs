@@ -105,7 +105,7 @@
 		    '("")))
 	    (center (list
                      (propertize " g " 'face 'powerline-symbol)
-		     (powerline-raw "%b %p @ %l:%c" modified)
+		     (powerline-raw "%b @ %p (%l:%c)" modified)
                      (propertize " g " 'face 'powerline-symbol)
 		     " "
 		     (powerline-vc)
