@@ -140,15 +140,16 @@
  ;;   `(powerline-inactive2 ((t (:foreground "grey44" :background "grey15"))))))
 
  (nby/with-current-theme-colors
-  ;(set-face-attribute 'mode-line nil :family "Hannotate SC")
+  (set-face-attribute 'mode-line nil :family "Latin Modern Mono Caps" :height 0.9 :box nil :background gray)
+  (set-face-attribute 'modeline-inactive nil :family "Latin Modern Mono Caps" :height 0.9 :box nil)
   (set-face-attribute 'powerline-modified-bound-warning nil :background yellow :foreground background)
   (set-face-attribute 'powerline-clock-inactive nil :background orange :foreground background)
   (set-face-attribute 'powerline-clock-active nil :background green :foreground background)
   (set-face-attribute 'powerline-flag-on nil :background green :foreground background)
-  (set-face-attribute 'powerline-active1 nil :foreground blue :background mode-line)
-  (set-face-attribute 'powerline-inactive1 nil :foreground blue :background mode-line)
-  (set-face-attribute 'powerline-active2 nil :foreground green :background background)
-  (set-face-attribute 'powerline-inactive2 nil :foreground green :background background))
+  (set-face-attribute 'powerline-active1 nil :foreground blue :background gray)
+  (set-face-attribute 'powerline-inactive1 nil :foreground blue :background gray)
+  (set-face-attribute 'powerline-active2 nil :foreground green :background "grey11")
+  (set-face-attribute 'powerline-inactive2 nil :foreground green :background "grey11"))
 
 )
 
