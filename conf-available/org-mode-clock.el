@@ -20,7 +20,7 @@
 
 (nby/with-feature
  'org
- (add-hook 'after-init-hook #'(lambda () (bh/punch-in t)))
+ ;;(add-hook 'after-init-hook #'(lambda () (bh/punch-in t)))
  (add-hook
   'kill-emacs-hook
   #'(lambda ()
