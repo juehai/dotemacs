@@ -75,6 +75,58 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
+;; Clojure mode
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(nby/with-feature 'cider)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; tuareg mode for ocaml
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(nby/with-feature
+ 'tuareg
+ (nby/with-feature
+  'utop
+  (when (executable-find "opam")
+    ;; Setup environment variables using opam
+    (dolist
+        (var (car (read-from-string
+                   (shell-command-to-string "opam config env --sexp"))))
+      (setenv (car var) (cadr var)))
+    ;; Update the emacs path
+    (setq exec-path (split-string (getenv "PATH") path-separator))
+    ;; Update the emacs load path
+    (push (concat (getenv "OCAML_TOPLEVEL_PATH")
+                  "/../../share/emacs/site-lisp") load-path)
+    ;; Automatically load utop.el
+    (setq auto-mode-alist
+          (append '(("\\.ml[ily]?$" . tuareg-mode)
+                    ("\\.topml$" . tuareg-mode))
+                  auto-mode-alist))
+    (autoload 'utop "utop" "Toplevel for OCaml" t)
+    (autoload 'utop-setup-ocaml-buffer "utop" "Toplevel for OCaml" t)
+    (add-hook 'tuareg-mode-hook
+              #'(lambda ()
+                  (local-set-key (kbd "C-c C-b") 'utop-eval-buffer)))
+    (nby/with-feature
+     'merlin
+     (setq opam-share (substring (shell-command-to-string "opam config var share 2> /dev/null") 0 -1))
+     (add-to-list 'load-path (concat opam-share "/emacs/site-lisp"))
+     ;; Start merlin on ocaml files
+     (add-hook 'tuareg-mode-hook 'merlin-mode t)
+     (add-hook 'caml-mode-hook 'merlin-mode t)
+     ;; Enable auto-complete
+     (setq merlin-use-auto-complete-mode 'easy)
+     ;; Use opam switch to lookup ocamlmerlin binary
+     (setq merlin-command 'opam)
+     (setq merlin-error-after-save nil)))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 ;; VCS
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -127,11 +179,11 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+; (setq
+;  projectile-cache-file (nby/build-relative-path "db/projectile.cache")
+;  projectile-known-projects-file (nby/build-relative-path "db/projectile-bookmarks.eld"))
 (nby/with-feature
  'projectile
- (setq
-  projectile-cache-file (nby/build-relative-path "db/projectile.cache")
-  projectile-known-projects-file (nby/build-relative-path "db/projectile-bookmarks.eld"))
  (nby/with-feature 'helm (helm-projectile-on))
  (projectile-global-mode t))
 
