@@ -141,7 +141,7 @@
 
  (nby/with-current-theme-colors
   (set-face-attribute 'mode-line nil :family "Latin Modern Mono Caps" :height 0.9 :box nil :background gray)
-  (set-face-attribute 'modeline-inactive nil :family "Latin Modern Mono Caps" :height 0.9 :box nil)
+  (set-face-attribute 'modeline-inactive nil :family "Latin Modern Mono Caps" :height 0.9 :box nil :background "#1f1f1f")
   (set-face-attribute 'powerline-modified-bound-warning nil :background yellow :foreground background)
   (set-face-attribute 'powerline-clock-inactive nil :background orange :foreground background)
   (set-face-attribute 'powerline-clock-active nil :background green :foreground background)
