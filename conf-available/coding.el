@@ -111,6 +111,7 @@
     (autoload 'utop-setup-ocaml-buffer "utop" "Toplevel for OCaml" t)
     (add-hook 'tuareg-mode-hook
               #'(lambda ()
+                  (local-set-key (kbd "C-c C-c") 'utop-eval-phrase)
                   (local-set-key (kbd "C-c C-b") 'utop-eval-buffer)))
     (nby/with-feature
      'merlin
