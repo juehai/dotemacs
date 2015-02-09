@@ -41,7 +41,7 @@
 (global-set-key "\C-cf"           'grep-find)
 (global-set-key "\C-c\C-x\C-c"    'comment-region)
 (global-set-key "\C-c\C-x\C-d"    'uncomment-region)
-(global-set-key (kbd "C-x F")     'djcb-find-file-as-root)
+(global-set-key (kbd "C-x F")     'nby/find-file-as-root)
 ;(global-set-key "\C-cs"           'nby/insert-separator)
 (nby/with-feature
  'message
@@ -118,14 +118,15 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defun djcb-find-file-as-root ()
+(defun nby/find-file-as-root ()
   "Like `ido-find-file, but automatically edit the file with
 root-privileges (using tramp/sudo), if the file is not writable by
 user."
   (interactive)
   (let ((file (ido-read-file-name "Edit as root: ")))
     (unless (file-writable-p file)
-      (setq file (concat "/sudo:root@localhost:" file)))
+      ;; use "/sudo::" to prevent asking ssh passphrase
+      (setq file (concat "/sudo::" file)))
     (find-file file)))
 
 
