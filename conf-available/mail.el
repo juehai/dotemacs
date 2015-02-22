@@ -11,12 +11,12 @@
 ;; smtpmail is a builtin feature
 (require 'smtpmail)
 
-(custom-set-variables
- '(send-mail-function 'smtpmail-send-it)
- '(smtpmail-default-smtp-server "smtp.gmail.com")
- '(smtpmail-stream-type 'starttls)
- '(smtpmail-smtp-server "smtp.gmail.com")
- '(smtpmail-smtp-service 587))
+(setq
+ send-mail-function 'smtpmail-send-it
+ smtpmail-default-smtp-server "smtp.gmail.com"
+ smtpmail-stream-type 'starttls
+ smtpmail-smtp-server "smtp.gmail.com"
+ smtpmail-smtp-service 587)
 
 ;; starttls support
 (require 'starttls)
@@ -41,22 +41,6 @@
   `(smtpmail-queue-dir ,(nby/path-join mu4e-maildir "local" "queue"))
   '(mu4e-html2text-command "html2text -utf8 -width 72"))
  (when (fboundp 'imagemagick-register-types) (imagemagick-register-types)))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;; Main Menu
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(nby/with-feature
- 'mu4e
- (setq mu4e-bm-ignore "")
- (setq mu4e-bookmarks
-       `( ("flag:unread AND NOT flag:trashed"                               "Unread messages"      ?u)
-          (,(concat "to:" user-mail-address mu4e-bm-ignore)                 "Messages for me"      ?m)
-          (,(concat "date:today..now" mu4e-bm-ignore)                       "Today's messages"     ?t)
-          (,(concat "date:7d..now" mu4e-bm-ignore)                          "Last 7 days"          ?w))))
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
