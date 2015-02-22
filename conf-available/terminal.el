@@ -64,4 +64,13 @@
 
  (global-set-key (kbd "C-z") 'nby/helm-terminals))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Bash Completion
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(require 'bash-completion)
+(bash-completion-setup)
+
 ;;; terminal.el ends here

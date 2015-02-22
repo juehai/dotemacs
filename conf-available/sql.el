@@ -11,17 +11,26 @@
 
 (nby/with-feature
  'sql
- (add-hook 'sql-interactive-mode-hook
-           (lambda ()
-             (toggle-truncate-lines t)))
 
  (defvar sql-connection-alist "" nil)
 
- (defun nby/sql-databases ()
-   (mapcar #'(lambda (x) (car x)) sql-connection-alist))
+ (defun nby/sql-databases () (mapcar #'car sql-connection-alist))
+
+ (defun nby/sql-complete ()
+   (interactive)
+   (let ((completions '("select" "insert" "update" "delete")))
+     (comint-dynamic-simple-complete
+      (comint-word "A-Za-z_")
+      completions)))
+
+ (add-hook 'sql-interactive-mode-hook
+           (lambda ()
+             (local-set-key (kbd "TAB") 'nby/sql-complete)
+             (toggle-truncate-lines t)))
 
  (nby/with-feature
   'helm
+
   (defun nby/sql-connect ()
     "Connect to the input server using my-sql-servers-list"
     (interactive)
