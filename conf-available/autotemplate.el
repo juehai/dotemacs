@@ -19,9 +19,9 @@
 
 
 (auto-insert-mode)
-(custom-set-variables
- '(auto-insert-query nil) ;; apply template without question
- `(auto-insert-directory ,(nby/build-relative-path "templates")))
+(setq
+ auto-insert-query nil ;; apply template without question
+ auto-insert-directory (nby/build-relative-path "templates"))
 
 (define-auto-insert "\\.org$" "template.org")
 (define-auto-insert "\\.ino$" "template.ino")
@@ -32,7 +32,7 @@
 (define-auto-insert "\\.sh$" "template.sh")
 (define-auto-insert "\\.rb$" "template.rb")
 (define-auto-insert "\\.el$" "template.el")
-(define-auto-insert "\\.py$" "template.py")
+(define-auto-insert "\\.py$" "template.py")  ;; conflicts with python-mode
 (define-auto-insert "\\.pl$" "template.pl")
 (define-auto-insert "\\.pm$" "template.pm")
 (define-auto-insert "\\.ml$" "template.ml")
