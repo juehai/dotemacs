@@ -139,6 +139,8 @@ is considered to be a project root."
   "Run buffer content as python program."
   (interactive)
   (save-buffer t)
-  (shell-command (concat python-shell-interpreter " " (buffer-file-name))))
+  (venv-with-virtualenv-shell-command
+   venv-current-name
+   (concat "python" " " (buffer-file-name))))
 
 ;;; lang-python.el ends here
