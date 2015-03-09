@@ -8,6 +8,7 @@
 (defvar user-conf-dir user-emacs-directory)
 (defvar nby/packaging-system 'elpa)
 (defvar nby/current-theme-colors 'nby/with-monokai-theme-colors)
+(defvar nby/disabled-features '())
 
 (defmacro nby/make-log (tag)
   "Make a log function outputs log with TAG as prefix."
@@ -104,12 +105,17 @@ If PACKAGE-NAME specified, install PACKAGE-NAME and require FEATURE."
 	(package (gensym)))
     `(let ((,name ,feature)
 	   (,package ,feature))
-       (nby/require ,name :package-name ,package)
-       (if (require ,name nil t)
-	   (progn ,@body)
-	 (nby/log-warn ,(concat "Feature %s cannot be found. "
-				"Some settings will be disabled")
-		       ,name)))))
+       (if (not (member ,name nby/disabled-features))
+           (progn
+             (nby/require ,name :package-name ,package)
+             (if (require ,name nil t)
+                 (progn ,@body)
+               (nby/log-warn ,(concat "Feature %s cannot be found. "
+                                      "Some settings will be disabled")
+                             ,name)))
+         (nby/log-warn ,(concat "Feature %s has been disabled manually. ")
+                       ,name)))))
+
 
 (defmacro nby/local-set-variables (&rest pairs)
   "Make variable buffer-local and set according to variable/value PAIRS."
