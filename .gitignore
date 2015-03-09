@@ -12,3 +12,5 @@ session.*
 elpa/
 request/
 projectile-bookmarks.eld
+eshell/
+.mc-lists.el
