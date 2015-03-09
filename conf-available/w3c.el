@@ -66,4 +66,22 @@
 'rainbow-mode
 (add-hook 'css-mode-hook 'rainbow-mode))
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; javascript mode
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(nby/with-feature
+ 'skewer-mode
+ (nby/with-feature
+  'js2-mode
+
+  (add-hook 'js2-mode-hook 'skewer-mode)
+  (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode)))
+ (add-hook 'css-mode-hook 'skewer-css-mode)
+ (add-hook 'web-mode-hook 'skewer-html-mode)
+ (add-hook 'html-mode-hook 'skewer-html-mode))
+
 ;;; w3c.el ends here
