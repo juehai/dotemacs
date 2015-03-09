@@ -1,0 +1,5 @@
+Grep in helm find file buffer?
+1. M-a to mark all files
+2. C-s do the search
+
+Grep in projectile? -> C-p s s
