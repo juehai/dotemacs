@@ -246,4 +246,18 @@
  (global-set-key (kbd "M-p") 'tabbar-backward-tab))
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; smart-mode-line
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(nby/with-feature
+ 'smart-mode-line
+ (setq sml/no-confirm-load-theme t
+       sml/theme 'respectful)
+ (sml/setup))
+
+
+
 ;;; ui.el ends here

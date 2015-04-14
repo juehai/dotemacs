@@ -22,6 +22,7 @@
                          ("melpa" . "http://melpa.milkbox.net/packages/")))
 
 (require 'nby (concat user-conf-dir "/lisp/nby.el"))
+(require 'nby-tools (concat user-conf-dir "/lisp/nby-tools.el"))
 
 ;; load user info before everything
 (nby/load user-info-file)
