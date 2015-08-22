@@ -30,8 +30,8 @@
 (setq-default indent-tabs-mode nil)
 
 ;; indent & unindent
-(global-set-key "\C-c>" 'nby/indent-region)
-(global-set-key "\C-c<" 'nby/unindent-region)
+(global-set-key "\C-c." 'nby/indent-region)
+(global-set-key "\C-c," 'nby/unindent-region)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -94,7 +94,13 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(nby/with-feature 'haskell-mode)
+(nby/with-feature
+ 'haskell-mode
+ (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+ (eval-after-load "haskell-mode"
+   '(progn
+      (define-key haskell-mode-map (kbd "C-,") 'haskell-move-nested-left)
+      (define-key haskell-mode-map (kbd "C-.") 'haskell-move-nested-right))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
