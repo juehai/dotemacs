@@ -38,16 +38,16 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(nby/with-feature
- 'session
- (setq
-  ;; resolv conflicts with helm
-  ;; https://github.com/emacs-helm/helm/issues/94
-  session-save-print-spec '(t nil 40000)
-  session-save-file (nby/build-relative-path "db" "session.el"))
- (add-hook 'after-init-hook 'session-initialize)
- (nby/with-feature
-  'org
-  (add-to-list 'session-globals-exclude 'org-mark-ring)))
+;(nby/with-feature
+; 'session
+; (setq
+;  ;; resolv conflicts with helm
+;  ;; https://github.com/emacs-helm/helm/issues/94
+;  session-save-print-spec '(t nil 40000)
+;  session-save-file (nby/build-relative-path "db" "session.el"))
+; (add-hook 'after-init-hook 'session-initialize)
+; (nby/with-feature
+;  'org
+;  (add-to-list 'session-globals-exclude 'org-mark-ring)))
 
 ;;; minibuffer.el ends here
