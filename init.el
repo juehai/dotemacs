@@ -2,18 +2,41 @@
 ;;; Commentary:
 ;;; Code:
 
+(require 'cl)
+
 (setq nby/startup-timestamp (float-time))
 ;; enable debugging when env variable set
 (when (getenv "EMACS_DEBUG")
   (setq debug-on-error t
         el-get-verbose t))
 
-;;; Path Variables
 (defvar user-home-dir "~")
-(defvar user-conf-dir (concat user-home-dir "/.emacs.d"))
-(defvar user-info-file (concat user-home-dir "/.userinfo.el"))
-(defvar user-custom-file (concat user-home-dir "/.usercustom.el"))
-(defvar user-local-file (concat user-home-dir "/.userlocal.el"))
+
+;;; Path Variables
+(defun nby/first-exist (c)
+  "Find first exist directory in list C."
+  (car (remove-if-not'file-exists-p c)))
+
+(defun nby/prepend-user-home-dir (c)
+  "Prepend user home directory at each elem of C."
+  (mapcar (lambda (x) (concat user-home-dir "/" x)) c))
+
+(defvar user-conf-dir
+  (nby/first-exist
+   (nby/prepend-user-home-dir
+    '(".emacs.d" "_emacs.d"))))
+(defvar user-info-file
+  (nby/first-exist
+   (nby/prepend-user-home-dir
+    '(".userinfo.el" "_userinfo.el"))))
+(defvar user-custom-file
+  (nby/first-exist
+   (nby/prepend-user-home-dir
+    '(".usercustom.el" "_usercustom.el"))))
+(defvar user-local-file
+  (nby/first-exist
+   (nby/prepend-user-home-dir
+    '(".userlocal.el" "_userlocal.el"))))
 (setq custom-file user-custom-file)
 
 ;;; Set ELPA sources before loading packages
