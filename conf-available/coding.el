@@ -101,7 +101,7 @@
            (lambda ()
              (turn-on-haskell-doc-mode)
              (haskell-indentation-mode)
-             (turn-on-haskell-ghci)))
+             ))
  (eval-after-load "haskell-mode"
    '(progn
       (define-key haskell-mode-map (kbd "C-,") 'haskell-move-nested-left)
