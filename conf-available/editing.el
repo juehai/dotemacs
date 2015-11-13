@@ -39,6 +39,7 @@
 
 (global-set-key "\M-g"            'goto-line)
 (global-set-key "\C-cf"           'grep-find)
+(global-set-key (kbd "C-c SPC")   'set-mark-command)
 (global-set-key "\C-c\C-x\C-c"    'comment-region)
 (global-set-key "\C-c\C-x\C-d"    'uncomment-region)
 (global-set-key (kbd "C-x F")     'nby/find-file-as-root)
