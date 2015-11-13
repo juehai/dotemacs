@@ -8,7 +8,7 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(global-set-key "\C-x\C-a" #'(lambda () (interactive)
+(global-set-key "\C-c\C-a" #'(lambda () (interactive)
                                (switch-to-buffer (other-buffer))))
 
 (nby/with-feature 'bs (global-set-key "\C-x\C-b" 'bs-show))
