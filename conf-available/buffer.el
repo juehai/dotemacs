@@ -8,7 +8,7 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(global-set-key "\C-c\C-a" #'(lambda () (interactive)
+(global-set-key "\C-x\C-x" #'(lambda () (interactive)
                                (switch-to-buffer (other-buffer))))
 
 (nby/with-feature 'bs (global-set-key "\C-x\C-b" 'bs-show))
@@ -42,6 +42,7 @@
  (global-set-key (kbd "M-y") 'helm-show-kill-ring) ; show kill ring when press alt-y
  (global-set-key (kbd "C-x b") 'helm-mini)
  (global-set-key (kbd "C-o") 'helm-occur)
+ (global-set-key (kbd "C-x g") 'helm-do-grep)
  (global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
  (global-set-key (kbd "C-c h g") 'helm-google-suggest)
 
