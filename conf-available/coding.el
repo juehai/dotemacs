@@ -96,14 +96,14 @@
 
 (nby/with-feature
  'haskell-mode
- (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
  (add-hook 'haskell-mode-hook
            (lambda ()
              (turn-on-haskell-doc-mode)
-             (haskell-indentation-mode)
+             (structured-haskell-mode)
              ))
  (eval-after-load "haskell-mode"
    '(progn
+      (define-key haskell-mode-map (kbd "C-m") 'shm/newline-indent)
       (define-key haskell-mode-map (kbd "C-,") 'haskell-move-nested-left)
       (define-key haskell-mode-map (kbd "C-.") 'haskell-move-nested-right))))
 
