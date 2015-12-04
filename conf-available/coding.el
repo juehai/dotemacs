@@ -98,12 +98,24 @@
  'haskell-mode
  (add-hook 'haskell-mode-hook
            (lambda ()
-             (turn-on-haskell-doc-mode)
-             (structured-haskell-mode)
+             ;; (turn-on-haskell-doc-mode)
+             (nby/with-feature
+              'shm
+              (structured-haskell-mode)
+              (setq shm-use-hdevtools t
+                    shm-use-presentation-mode t
+                    shm-auto-insert-skeletons t
+                    shm-auto-insert-bangs t))
+             (nby/with-feature
+              'hindent
+              (setq hindent-style "gibiansky")
+              (hindent-mode))
              ))
  (eval-after-load "haskell-mode"
    '(progn
-      (define-key haskell-mode-map (kbd "C-m") 'shm/newline-indent)
+      (nby/with-feature
+       'hindent
+       (define-key haskell-mode-map (kbd "C-M-\\") 'hindent-reformat-region))
       (define-key haskell-mode-map (kbd "C-,") 'haskell-move-nested-left)
       (define-key haskell-mode-map (kbd "C-.") 'haskell-move-nested-right))))
 
