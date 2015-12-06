@@ -17,6 +17,8 @@
 
 (custom-set-variables '(compilation-scroll-output t))
 
+(electric-indent-mode t)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; Code Tidy
