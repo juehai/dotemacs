@@ -100,10 +100,10 @@
  'haskell-mode
  (add-hook 'haskell-mode-hook
            (lambda ()
-             ;; (turn-on-haskell-doc-mode)
+             (turn-on-haskell-doc-mode)
              (nby/with-feature
               'shm
-              (structured-haskell-mode)
+              ; (structured-haskell-mode)
               (setq shm-use-hdevtools t
                     shm-use-presentation-mode t
                     shm-auto-insert-skeletons t
