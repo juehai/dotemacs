@@ -1,0 +1,2 @@
+You can use C-x C-x to mark an item in helm-buffer without
+activate your Input Method.

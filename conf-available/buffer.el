@@ -43,8 +43,8 @@
  (global-set-key (kbd "C-x b") 'helm-mini)
  (global-set-key (kbd "C-o") 'helm-occur)
  (global-set-key (kbd "C-x g") 'helm-do-grep)
- (global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
  (global-set-key (kbd "C-c h g") 'helm-google-suggest)
+ (global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
 
  (nby/with-feature 'helm-projectile)
  (nby/with-feature 'helm-bm (global-set-key (kbd "C-c b") 'helm-bm))
@@ -54,12 +54,16 @@
        helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
        helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
        helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
+       helm-autoresize-max-height 30
+       helm-autoresize-min-height 30
        helm-ff-file-name-history-use-recentf t)
+ (helm-autoresize-mode t)
 
 
  (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
  (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
  (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
+ (define-key helm-map (kbd "C-x C-x") 'helm-toggle-visible-mark)
 
  (helm-mode 1))
 
