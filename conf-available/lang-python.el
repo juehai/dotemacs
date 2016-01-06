@@ -71,8 +71,8 @@ is considered to be a project root."
 ;(nby/with-feature 'pymacs)
 (nby/with-feature 'virtualenvwrapper)
 
-(nby/with-feature
- 'python-mode
+;(nby/with-feature
+; 'python-mode
 
  ;; unload python as it conflicts with python-mode
  (when (featurep 'python) (unload-feature 'python t))
@@ -110,7 +110,8 @@ is considered to be a project root."
 ;;      (nby/with-feature
 ;;       'auto-complete
 ;;       (add-to-list 'ac-sources 'ac-source-pycomplete))
-      (local-set-key (kbd "C-c C-c") 'eval-buffer-as-python))))
+      (local-set-key (kbd "C-c C-c") 'eval-buffer-as-python)))
+;)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -120,13 +121,11 @@ is considered to be a project root."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (nby/with-feature
- 'python-mode
- (nby/with-feature
-  'jedi
-  (add-hook 'python-mode-hook 'jedi:setup)
-  (add-hook 'python-mode-hook 'nby/setup-project-venv)
-  (setq jedi:setup-keys nil
-        jedi:complete-on-dot t)))
+ 'jedi
+ (add-hook 'python-mode-hook 'jedi:setup)
+ (add-hook 'python-mode-hook 'nby/setup-project-venv)
+ (setq jedi:setup-keys nil
+       jedi:complete-on-dot t))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
