@@ -52,7 +52,7 @@ is considered to be a project root."
           nil))
     nil))
 
-(defun nby/jedi-setup-venv ()
+(defun nby/setup-project-venv ()
   "Activates the virtualenv of the current buffer."
   (let ((project-name (nby/python-project-name buffer-file-name)))
     (when project-name
@@ -123,10 +123,10 @@ is considered to be a project root."
  'python-mode
  (nby/with-feature
   'jedi
-  (add-hook 'python-mode-hook 'nby/jedi-setup-venv)
   (add-hook 'python-mode-hook 'jedi:setup)
+  (add-hook 'python-mode-hook 'nby/setup-project-venv)
   (setq jedi:setup-keys nil
-	jedi:complete-on-dot t)))
+        jedi:complete-on-dot t)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
