@@ -55,7 +55,7 @@ is considered to be a project root."
 (defun nby/setup-project-venv ()
   "Activates the virtualenv of the current buffer."
   (let ((project-name (nby/python-project-name buffer-file-name)))
-    (when project-name
+    (when  (venv-is-valid project-name)
       (progn
         (message (concat
                   "use virtualenv: "
@@ -105,7 +105,8 @@ is considered to be a project root."
        '(py-indent-offset     nby/python-indentation-size)
        '(indent-tabs-mode     nil))
       ;; FIXME: smart indentation may cause python-mode hang
-      (py-smart-indentation-on)
+      ;;        py-smart-indentation now seems gone
+      ;; (py-smart-indentation-on)
       (add-to-list 'ac-sources 'ac-source-yasnippet)
 ;;      (nby/with-feature
 ;;       'auto-complete
