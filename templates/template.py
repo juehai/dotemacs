@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #
 # This piece of code is written by
 #    `user-full-name` <`user-mail-address`>
