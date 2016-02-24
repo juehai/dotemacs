@@ -68,6 +68,7 @@ is considered to be a project root."
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(nby/with-feature 'flycheck-virtualenv)
 ;(nby/with-feature 'pymacs)
 (nby/with-feature 'virtualenvwrapper)
 
