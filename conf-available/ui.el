@@ -181,12 +181,13 @@
 ;; Sticky Window
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; this feature makes C-x 1 behave weird
-;(nby/with-feature
-; 'sticky-windows-plus
-; (global-set-key "\C-x0" 'sticky-window-delete-window)
-; (global-set-key "\C-x1" 'sticky-window-delete-other-windows)
-; (global-set-key "\C-x9" 'sticky-windows-plus-toggle))
+
+(nby/with-feature
+ 'sticky-windows-plus
+ ; (global-set-key "\C-x0" 'sticky-window-delete-window)
+ ; this feature makes C-x 1 behave weird
+ ; (global-set-key "\C-x1" 'sticky-window-delete-other-windows)
+ (global-set-key "\C-x9" 'sticky-windows-plus-toggle))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -194,8 +195,16 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(defun nby/diredp-find-file-auto ()
+  (interactive)
+  (let ((file  (dired-get-file-for-visit)))
+    (if (file-directory-p file)
+        (diredp-find-file-reuse-dir-buffer)
+      (dired-find-file-other-window))))
+
 (nby/with-feature
  'dired+
+ (define-key dired-mode-map "\r" 'nby/diredp-find-file-auto)
  (diredp-toggle-find-file-reuse-dir 1))
 
 
