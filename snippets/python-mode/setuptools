@@ -1,0 +1,27 @@
+# -*- mode: snippet -*-
+# name: python setuptools template
+# key: setuptools
+# --
+import setuptools
+
+
+setuptools.setup(
+    name='${1:name}',
+    version='0.0.1',
+    description='${2:description}',
+    author='`user-full-name`',
+    author_email='`user-mail-address`',
+    url='',
+    install_requires=[],
+    packages=setuptools.find_packages(exclude=["test"]),
+    entry_points={
+        'console_scripts': [
+        ]
+    },
+    classifiers=[
+        'Development Status :: 4 - Beta Development Status',
+        'Environment :: Console',
+        'Environment :: Web',
+        'Topic :: Utilities',
+    ],
+)
