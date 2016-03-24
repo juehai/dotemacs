@@ -1,1 +1,0 @@
-../conf-available/org-mode-gtd.el
