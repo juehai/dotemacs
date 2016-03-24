@@ -36,6 +36,7 @@
 (define-auto-insert "\\.pl$" "template.pl")
 (define-auto-insert "\\.pm$" "template.pm")
 (define-auto-insert "\\.ml$" "template.ml")
+(define-auto-insert "\\.lua$" "template.lua")
 (define-auto-insert "\\.mq4$" "template.mql")
 (define-auto-insert "\\.mq5$" "template.mql")
 (define-auto-insert "\\.mql$" "template.mql")
