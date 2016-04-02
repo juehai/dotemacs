@@ -38,7 +38,8 @@ exist."
     (if (file-exists-p new-load-path)
       (progn
         (add-to-list 'load-path new-load-path)
-        (nby/log-info "Adding new load path: %s" new-load-path))
+        (nby/log-info "Adding new load path: %s" new-load-path)
+        new-load-path)
       (unless noerror
         (nby/log-warn "Path %s doesn't exist" new-load-path)))))
 
