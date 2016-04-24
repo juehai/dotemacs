@@ -37,7 +37,7 @@
  (add-hook 'org-mode-hook
            #'(lambda ()
 	       (flyspell-mode t)))
- (add-to-list 'auto-mode-alist '("\\.\\(org\\|org_archive\\|txt\\)$" . org-mode)))
+ (add-to-list 'auto-mode-alist '("\\.\\(org\\|org_archive\\)$" . org-mode)))
 
 (custom-set-variables
  '(org-babel-temporary-directory
