@@ -31,6 +31,7 @@
 (define-auto-insert "\\.tex$" "template.tex")
 (define-auto-insert "\\.sh$" "template.sh")
 (define-auto-insert "\\.rb$" "template.rb")
+(define-auto-insert "\\.rs$" "template.rs")
 (define-auto-insert "\\.el$" "template.el")
 (define-auto-insert "\\.py$" "template.py")  ;; conflicts with python-mode
 (define-auto-insert "\\.pl$" "template.pl")
