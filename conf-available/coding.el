@@ -212,7 +212,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (nby/with-feature
  'company
- (add-hook 'after-init-hook 'global-company-mode))
+ (add-hook 'after-init-hook 'global-company-mode)
+ (nby/with-current-theme-colors
+  (set-face-attribute 'company-tooltip-annotation nil :inherit 'company-tooltip :foreground blue)
+  (set-face-attribute 'company-tooltip-annotation-selection nil :inherit 'company-tooltip-selection :foreground yellow)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
