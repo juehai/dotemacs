@@ -251,6 +251,10 @@
  ; (add-hook 'rust-mode-hook 'cargo-minor-mode)
 
  (nby/with-feature
+  'flycheck-rust
+  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+
+ (nby/with-feature
   'racer
   (add-hook 'rust-mode-hook #'racer-mode)
   (add-hook 'racer-mode-hook #'eldoc-mode)
