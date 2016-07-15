@@ -24,8 +24,6 @@
   (compilation-start
    (concat (nby/path-join (nby/find-golang) "go") " run " (buffer-file-name))))
 
-(nby/with-feature 'go-autocomplete)
-
 (nby/with-feature
  'go-mode
  (add-hook 'before-save-hook #'gofmt-before-save)

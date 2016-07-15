@@ -62,6 +62,10 @@ is considered to be a project root."
                   project-name))
         (venv-workon project-name)))))
 
+(defun nby/setup-company-jedi ()
+  "enable company-mode for python"
+  (add-to-list 'company-backends 'company-jedi))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; Python-mode: main python mode
@@ -82,11 +86,6 @@ is considered to be a project root."
  (if (require 'nby-coding nil t)
    (nby/whitespace-detection-mode 'python-mode :tab t)
    (nby/log-warn "whitespace detection failed to start in python-mode"))
-
- ;; (nby/with-feature
- ;;  'auto-complete
- ;;  (unless (require 'auto-complete-pycomplete nil t)
- ;;    (nby/log-warn "auto-complete-pycomplete failed to load")))
 
  ;; do not start python shell at start
  (custom-set-variables
@@ -109,10 +108,6 @@ is considered to be a project root."
       ;; FIXME: smart indentation may cause python-mode hang
       ;;        py-smart-indentation now seems gone
       ;; (py-smart-indentation-on)
-      (add-to-list 'ac-sources 'ac-source-yasnippet)
-;;      (nby/with-feature
-;;       'auto-complete
-;;       (add-to-list 'ac-sources 'ac-source-pycomplete))
       (local-set-key (kbd "C-c C-c") 'eval-buffer-as-python)))
 ;)
 
@@ -124,10 +119,14 @@ is considered to be a project root."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (nby/with-feature
- 'jedi
+ 'jedi-core
  (add-hook 'python-mode-hook 'jedi:setup)
  (add-hook 'python-mode-hook 'nby/setup-project-venv)
+ (nby/with-feature
+  'company-jedi
+  (add-hook 'python-mode-hook 'nby/setup-company-jedi))
  (setq jedi:setup-keys nil
+       jedi:use-shortcuts t
        jedi:complete-on-dot t))
 
 

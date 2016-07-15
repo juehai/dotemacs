@@ -22,6 +22,7 @@
 ;;        '(standard-indent   4)
 ;;        '(indent-tabs-mode nil)))))
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; Web Mode
@@ -39,19 +40,17 @@
  (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
  (add-to-list 'auto-mode-alist '("\\.tmpl\\'" . web-mode))
+ (nby/with-feature 'company-web)
  (add-hook
   'web-mode-hook
   #'(lambda ()
-      (setq web-mode-ac-sources-alist
-            '(("css" . (ac-source-css-property))
-              ("html" . (ac-source-words-in-buffer ac-source-abbrev)))
       (setq web-mode-markup-indent-offset 2
             web-mode-css-indent-offset 2
             web-mode-code-indent-offset 2
             web-mode-style-padding 2
             web-mode-script-padding 2
             web-mode-block-padding 0
-            web-mode-comment-style 2)))))
+            web-mode-comment-style 2))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -65,7 +64,6 @@
 (nby/with-feature
 'rainbow-mode
 (add-hook 'css-mode-hook 'rainbow-mode))
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
