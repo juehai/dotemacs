@@ -64,6 +64,7 @@ is considered to be a project root."
 
 (defun nby/setup-company-jedi ()
   "enable company-mode for python"
+  (yas-minor-mode-on)
   (add-to-list 'company-backends 'company-jedi))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
