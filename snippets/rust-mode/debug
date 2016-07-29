@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: debug
+# key: debug
+# --
+debug!("${1:message}{:?}", ${2:variables});

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: print
+# key: print
+# --
+println!("${1:message}{:?}", ${2:variables});
