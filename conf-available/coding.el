@@ -196,13 +196,13 @@
   (set-face-foreground 'git-gutter:added    green)
   (set-face-foreground 'git-gutter:deleted  red))
  (global-git-gutter-mode t))
-
-(nby/with-feature
- 'git-gutter-fringe
- (nby/with-current-theme-colors
-  (set-face-foreground 'git-gutter-fr:modified yellow)
-  (set-face-foreground 'git-gutter-fr:added    green)
-  (set-face-foreground 'git-gutter-fr:deleted  red)))
+(if window-system
+    (nby/with-feature
+     'git-gutter-fringe
+     (nby/with-current-theme-colors
+      (set-face-foreground 'git-gutter-fr:modified yellow)
+      (set-face-foreground 'git-gutter-fr:added    green)
+      (set-face-foreground 'git-gutter-fr:deleted  red))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -267,7 +267,6 @@
    'company-racer
    (define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
    (setq company-tooltip-align-annotations t))))
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
