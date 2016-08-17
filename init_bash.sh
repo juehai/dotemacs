@@ -4,5 +4,5 @@
 # author     : Jianing Yang <jianingy.yang@gmail.com>
 
 
-export PS1="\u:\W> "
-echo
+export PS1="{ \W } ╼ "
+clear
