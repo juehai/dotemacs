@@ -1,0 +1,1 @@
+../conf-available/lang-rust.el
