@@ -9,7 +9,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (custom-set-variables
  '(current-language-environment "UTF-8")
-
+ '(line-spacing 2)                         ;; more line spacing
  '(display-time-day-and-date t)            ;; Show date
  '(display-time-24hr-format  t)            ;; Show time in 24-hour format
  '(show-paren-mode     t)
