@@ -269,6 +269,39 @@
        sml/theme 'respectful)
  (sml/setup))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; linum-mode
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defvar nby/current-line-number 0)
+
+(defface nby/linum-current
+  `((t :inherit linum :foreground "#cccccc" :background ,(face-background 'highlight nil t)))
+  "Face for the current line number."
+  :group 'linum)
+
+(defadvice linum-update (around nby/linum-update)
+  (let ((nby/current-line-number (line-number-at-pos)))
+    ad-do-it))
+(ad-activate 'linum-update)
+
+(defun nby/render-linum (line)
+  (let* ((w (length (number-to-string
+                     (count-lines (point-min) (point-max)))))
+         (fmt (concat " %" (number-to-string w) "d "))
+         (currentp (eq line nby/current-line-number)))
+    (propertize (format fmt line) 'face (if currentp 'nby/linum-current 'linum))))
+
+(defadvice linum-on (around nby/linum-on)
+  (unless (or (minibufferp)
+              (string-match "\*" (buffer-name)))
+    (linum-mode 1)))
+(ad-activate 'linum-on)
+
+(setq linum-format 'nby/render-linum)
+(global-linum-mode)
 
 
 ;;; ui.el ends here
