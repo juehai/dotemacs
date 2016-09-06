@@ -290,7 +290,7 @@
 (defun nby/render-linum (line)
   (let* ((w (length (number-to-string
                      (count-lines (point-min) (point-max)))))
-         (fmt (concat " %" (number-to-string w) "d "))
+         (fmt (concat "  %" (number-to-string w) "d  "))
          (currentp (eq line nby/current-line-number)))
     (propertize (format fmt line) 'face (if currentp 'nby/linum-current 'linum))))
 
@@ -301,7 +301,7 @@
 (ad-activate 'linum-on)
 
 (setq linum-format 'nby/render-linum)
-(global-linum-mode)
+; (global-linum-mode)
 
 
 ;;; ui.el ends here

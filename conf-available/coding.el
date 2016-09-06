@@ -187,22 +187,23 @@
 (nby/with-feature 'fringe-helper)
 
 (nby/with-feature
- 'git-gutter
- (setq git-gutter-modified-sign "  " ;; two space
-       git-gutter-added-sign "++"    ;; multiple character is OK
-       git-gutter-deleted-sign "--")
+ 'git-gutter+
+ (setq git-gutter+-modified-sign "  " ;; two space
+       git-gutter+-added-sign "++"    ;; multiple character is OK
+       git-gutter+-deleted-sign "--")
  (nby/with-current-theme-colors
-  (set-face-foreground 'git-gutter:modified yellow)
-  (set-face-foreground 'git-gutter:added    green)
-  (set-face-foreground 'git-gutter:deleted  red))
- (global-git-gutter-mode t))
+  (set-face-foreground 'git-gutter+-modified yellow)
+  (set-face-foreground 'git-gutter+-added    green)
+  (set-face-foreground 'git-gutter+-deleted  red))
+; (git-gutter:linum-setup)
+ (global-git-gutter+-mode t))
 (if window-system
     (nby/with-feature
-     'git-gutter-fringe
+     'git-gutter-fringe+
      (nby/with-current-theme-colors
-      (set-face-foreground 'git-gutter-fr:modified yellow)
-      (set-face-foreground 'git-gutter-fr:added    green)
-      (set-face-foreground 'git-gutter-fr:deleted  red))))
+      (set-face-foreground 'git-gutter-fr+-modified yellow)
+      (set-face-foreground 'git-gutter-fr+-added    green)
+      (set-face-foreground 'git-gutter-fr+-deleted  red))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
