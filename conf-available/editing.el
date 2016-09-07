@@ -43,6 +43,8 @@
 (global-set-key "\C-c\C-x\C-c"    'comment-region)
 (global-set-key "\C-c\C-x\C-d"    'uncomment-region)
 (global-set-key (kbd "C-x F")     'nby/find-file-as-root)
+(global-set-key "\M-p"            'backward-sexp)
+(global-set-key "\M-n"            'forward-sexp)
 ;(global-set-key "\C-cs"           'nby/insert-separator)
 (nby/with-feature
  'message
