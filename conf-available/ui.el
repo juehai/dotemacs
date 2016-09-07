@@ -271,37 +271,56 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;; linum-mode
+;; linum-mode: deprecated. linum is too slow
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defvar nby/current-line-number 0)
+;; (defvar nby/current-line-number 0)
 
-(defface nby/linum-current
-  `((t :inherit linum :foreground "#cccccc" :background ,(face-background 'highlight nil t)))
-  "Face for the current line number."
-  :group 'linum)
+;; (defface nby/linum-current
+;;   `((t :inherit linum :foreground "#cccccc" :background ,(face-background 'highlight nil t)))
+;;   "Face for the current line number."
+;;   :group 'linum)
 
-(defadvice linum-update (around nby/linum-update)
-  (let ((nby/current-line-number (line-number-at-pos)))
-    ad-do-it))
-(ad-activate 'linum-update)
+;; (defadvice linum-update (around nby/linum-update)
+;;   (let ((nby/current-line-number (line-number-at-pos)))
+;;     ad-do-it))
+;; (ad-activate 'linum-update)
 
-(defun nby/render-linum (line)
-  (let* ((w (length (number-to-string
-                     (count-lines (point-min) (point-max)))))
-         (fmt (concat "  %" (number-to-string w) "d  "))
-         (currentp (eq line nby/current-line-number)))
-    (propertize (format fmt line) 'face (if currentp 'nby/linum-current 'linum))))
+;; (defun nby/render-linum (line)
+;;   (let* ((w (length (number-to-string
+;;                      (count-lines (point-min) (point-max)))))
+;;          (fmt (concat "  %" (number-to-string w) "d  "))
+;;          (currentp (eq line nby/current-line-number)))
+;;     (propertize (format fmt line) 'face (if currentp 'nby/linum-current 'linum))))
 
-(defadvice linum-on (around nby/linum-on)
-  (unless (or (minibufferp)
-              (string-match "\*" (buffer-name)))
-    (linum-mode 1)))
-(ad-activate 'linum-on)
+;; (defadvice linum-on (around nby/linum-on)
+;;   (unless (or (minibufferp)
+;;               (string-match "\*" (buffer-name)))
+;;     (linum-mode 1)))
+;; (ad-activate 'linum-on)
 
-(setq linum-format 'nby/render-linum)
-; (global-linum-mode)
+;; (setq linum-format 'nby/render-linum)
+;; (global-linum-mode)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; nlinum-mode
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(nby/with-feature
+ 'nlinum
+ ;; better with 1.7+
+ (setq nlinum-format "  %d "
+       nlinum-highlight-current-line t)
+ (nby/with-current-theme-colors
+  (set-face-attribute 'nlinum-current-line nil :weight 'light :background mode-line :foreground yellow))
+ (define-globalized-minor-mode nby/global-nlinum-mode nlinum-mode
+   (lambda ()
+     (unless (or (minibufferp)
+                 (string-match "\*" (buffer-name)))
+       (nlinum-mode))))
+ (nby/global-nlinum-mode))
 
 ;;; ui.el ends here
