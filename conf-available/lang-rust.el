@@ -19,6 +19,8 @@
                       (file-name-sans-extension (buffer-file-name))))))
  (define-key rust-mode-map (kbd "C-c C-c") 'rust-save-compile-and-run)
 
+ (yas/minor-mode)
+
  (nby/with-feature
   'flycheck-rust
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
@@ -33,4 +35,3 @@
    'company-racer
    (define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
    (setq company-tooltip-align-annotations t))))
-
