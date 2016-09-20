@@ -174,7 +174,6 @@ user."
 ;; YASnippet
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(yas-global-mode t)
+(nby/with-feature 'yasnippet (yas-global-mode t))
 
 ;;; editing.el ends here
