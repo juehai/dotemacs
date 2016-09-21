@@ -323,4 +323,15 @@
        (nlinum-mode))))
  (nby/global-nlinum-mode))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; rotate
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(nby/with-feature
+ 'rotate
+ (global-set-key (kbd "M-SPC") 'rotate-layout)
+ (global-set-key (kbd "M-j") 'rotate-window))
+
 ;;; ui.el ends here
