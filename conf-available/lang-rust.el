@@ -26,6 +26,10 @@
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
  (nby/with-feature
+  'rustfmt
+  (define-key rust-mode-map (kbd "C-c C-f") #'rustfmt-format-buffer))
+
+ (nby/with-feature
   'racer
   (add-hook 'rust-mode-hook #'racer-mode)
   (add-hook 'racer-mode-hook #'eldoc-mode)
