@@ -14,3 +14,5 @@ request/
 projectile-bookmarks.eld
 eshell/
 .mc-lists.el
+abbrev_defs
+network-security.data
