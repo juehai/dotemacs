@@ -84,6 +84,7 @@
   (nby/with-feature
    'sublime-themes
    (load-theme 'spolsky t)
+   (set-face-attribute 'vertical-border nil :foreground "#333")
    (setq nby/current-theme-colors 'nby/with-spolsky-theme-colors)))
 
 (defun load-monokai-theme ()
