@@ -128,7 +128,10 @@ If PACKAGE-NAME specified, install PACKAGE-NAME and require FEATURE."
   `(progn
      (nby/add-to-load-path "themes")
      (require 'nby-theme-colors)
-     (let* ((foreground  ,(face-attribute 'default :foreground))
+     (let* ((unspecified-fg nil)
+-          (unspecified-bg nil)
+-          (unspecified nil)
+           (foreground  ,(face-attribute 'default :foreground))
            (background   ,(face-attribute 'default :background))
            (selection    ,(face-attribute 'highlight :background))
            (comment      ,(face-attribute 'font-lock-comment-face :foreground)))
