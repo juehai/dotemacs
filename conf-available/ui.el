@@ -79,6 +79,13 @@
   nil
   "Don't apply color theme.")
 
+(defun load-spolsky-theme ()
+  "Apply spolsky theme with custom fixes"
+  (nby/with-feature
+   'sublime-themes
+   (load-theme 'spolsky t)
+   (setq nby/current-theme-colors 'nby/with-spolsky-theme-colors)))
+
 (defun load-monokai-theme ()
   "Apply monokai theme with custom fixes"
   (nby/with-feature
@@ -108,10 +115,10 @@
      ;(nby/require 'tomorrow-theme)
       ;; enable color-theme
       (if window-system
-          (load-monokai-theme)
+          (load-spolsky-theme)
           ;; (load-solarized-light-theme)
           ;; (load-solarized-dark-theme)
-          (load-monokai-theme)))))
+          (load-spolsky-theme)))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -214,47 +221,47 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(nby/with-feature
- 'tabbar-ruler
-
- (setq tabbar-ruler-global-tabbar t
-       tabbar-ruler-global-ruler nil
-       tabbar-ruler-popup-menu nil
-       tabbar-ruler-popup-toolbar nil
-       tabbar-ruler-popup-scrollbar nil)
-
- ;; disable default tabbar-install-faces
- (defadvice tabbar-install-faces (around nby/tabbar-install-faces-advice activate)
-   "Avoids tabbar-ruler install its own faces."
-   (nby/tabbar-install-faces))
-
- (defun nby/tabbar-install-faces ()
-   "custom tabbar theme"
-   (nby/with-current-theme-colors
-    (dolist (face '(tabbar-default
-                    tabbar-highlight
-                    tabbar-selected
-                    tabbar-unselected
-                    tabbar-selected-highlight
-                    tabbar-unselected-highlight))
-      (face-spec-reset-face face nil))
-    (setq tabbar-background-color mode-line)
-    (set-face-attribute 'tabbar-default nil :box nil :family "Hannotate SC" :background mode-line :foreground comment :height 0.9 :box mode-line)
-    (set-face-attribute 'tabbar-highlight nil :inherit nil :box nil)
-    (set-face-attribute 'tabbar-separator nil :inherit 'tabbar-default)
-    (set-face-attribute 'tabbar-selected nil :inherit 'tabbar-default :foreground yellow :background background :box background)
-    (set-face-attribute 'tabbar-selected-modified nil :inherit 'tabbar-selected :weight 'ultra-bold :foreground yellow :background background)
-    (set-face-attribute 'tabbar-unselected nil :inherit 'tabbar-default :foreground comment :background mode-line)
-    (set-face-attribute 'tabbar-unselected-modified nil :inherit 'tabbar-unselected :weight 'ultra-bold :foreground comment :background mode-line)))
-
- (nby/tabbar-install-faces)
- ;; group by projectile if we have projectile loadded
- (nby/with-feature
-  'projectile
-  (tabbar-ruler-group-by-projectile-project))
-
- (global-set-key (kbd "M-n") 'tabbar-forward-tab)
- (global-set-key (kbd "M-p") 'tabbar-backward-tab))
+;; (nby/with-feature
+;;  'tabbar-ruler
+;; 
+;;  (setq tabbar-ruler-global-tabbar t
+;;        tabbar-ruler-global-ruler nil
+;;        tabbar-ruler-popup-menu nil
+;;        tabbar-ruler-popup-toolbar nil
+;;        tabbar-ruler-popup-scrollbar nil)
+;; 
+;;  ;; disable default tabbar-install-faces
+;;  (defadvice tabbar-install-faces (around nby/tabbar-install-faces-advice activate)
+;;    "Avoids tabbar-ruler install its own faces."
+;;    (nby/tabbar-install-faces))
+;; 
+;;  (defun nby/tabbar-install-faces ()
+;;    "custom tabbar theme"
+;;    (nby/with-current-theme-colors
+;;     (dolist (face '(tabbar-default
+;;                     tabbar-highlight
+;;                     tabbar-selected
+;;                     tabbar-unselected
+;;                     tabbar-selected-highlight
+;;                     tabbar-unselected-highlight))
+;;       (face-spec-reset-face face nil))
+;;     (setq tabbar-background-color mode-line)
+;;     (set-face-attribute 'tabbar-default nil :box nil :family "Hannotate SC" :background mode-line :foreground comment :height 0.9 :box mode-line)
+;;     (set-face-attribute 'tabbar-highlight nil :inherit nil :box nil)
+;;     (set-face-attribute 'tabbar-separator nil :inherit 'tabbar-default)
+;;     (set-face-attribute 'tabbar-selected nil :inherit 'tabbar-default :foreground yellow :background background :box background)
+;;     (set-face-attribute 'tabbar-selected-modified nil :inherit 'tabbar-selected :weight 'ultra-bold :foreground yellow :background background)
+;;     (set-face-attribute 'tabbar-unselected nil :inherit 'tabbar-default :foreground comment :background mode-line)
+;;     (set-face-attribute 'tabbar-unselected-modified nil :inherit 'tabbar-unselected :weight 'ultra-bold :foreground comment :background mode-line)))
+;; 
+;;  (nby/tabbar-install-faces)
+;;  ;; group by projectile if we have projectile loadded
+;;  (nby/with-feature
+;;   'projectile
+;;   (tabbar-ruler-group-by-projectile-project))
+;; 
+;;  (global-set-key (kbd "M-n") 'tabbar-forward-tab)
+;;  (global-set-key (kbd "M-p") 'tabbar-backward-tab))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
