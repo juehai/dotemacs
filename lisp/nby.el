@@ -132,7 +132,7 @@ If PACKAGE-NAME specified, install PACKAGE-NAME and require FEATURE."
            (background   ,(face-attribute 'default :background))
            (selection    ,(face-attribute 'highlight :background))
            (comment      ,(face-attribute 'font-lock-comment-face :foreground))
-           (mode-line    ,(face-attribute 'mode-line :background)))
+           (mode-line    ,(face-attribute 'default :background)))
        (,nby/current-theme-colors ,@body))))
 
 

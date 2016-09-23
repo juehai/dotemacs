@@ -46,6 +46,21 @@
           (gray                     "#474747"))
      ,@body))
 
+(defmacro nby/with-spolsky-theme-colors (&rest body)
+  "Execute BODY With current theme colors in context."
+  `(let* (
+          ;; Primary colors
+          (yellow                   "#EEDC82")
+          (orange                   "#FC580C")
+          (red                      "#F92672")
+          (magenta                  "#FF80F4")
+          (violet                   "#AE81FF")
+          (blue                     "#66D9EF")
+          (cyan                     "#A1EFE4")
+          (green                    "#A6E22E")
+          (gray                     "#555555"))
+     ,@body))
+
 (provide 'nby-theme-colors)
 
 ;; Local Variables:
