@@ -131,8 +131,7 @@ If PACKAGE-NAME specified, install PACKAGE-NAME and require FEATURE."
      (let* ((foreground  ,(face-attribute 'default :foreground))
            (background   ,(face-attribute 'default :background))
            (selection    ,(face-attribute 'highlight :background))
-           (comment      ,(face-attribute 'font-lock-comment-face :foreground))
-           (mode-line    ,(face-attribute 'default :background)))
+           (comment      ,(face-attribute 'font-lock-comment-face :foreground)))
        (,nby/current-theme-colors ,@body))))
 
 

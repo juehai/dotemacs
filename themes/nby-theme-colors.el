@@ -28,7 +28,8 @@
            (blue        (find-color 'blue))
            (cyan        (find-color 'cyan))
            (green       (find-color 'green))
-           )
+          ;; Alternatives
+          (background2              "#474747"))
        ,@body)))
 
 (defmacro nby/with-monokai-theme-colors (&rest body)
@@ -43,7 +44,10 @@
           (blue                     "#66D9EF")
           (cyan                     "#A1EFE4")
           (green                    "#A6E22E")
-          (gray                     "#474747"))
+          (gray                     "#474747")
+
+          ;; Alternatives
+          (background2              "#474747"))
      ,@body))
 
 (defmacro nby/with-spolsky-theme-colors (&rest body)
@@ -58,7 +62,10 @@
           (blue                     "#66D9EF")
           (cyan                     "#A1EFE4")
           (green                    "#A6E22E")
-          (gray                     "#555555"))
+          (gray                     "#555555")
+
+          ;; Alternatives
+          (background2              "#555555"))
      ,@body))
 
 (provide 'nby-theme-colors)

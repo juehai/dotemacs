@@ -220,9 +220,15 @@
    (define-key company-active-map (kbd "C-n") #'company-select-next)
    (define-key company-active-map (kbd "C-p") #'company-select-previous))
  (nby/with-current-theme-colors
-  (set-face-attribute 'company-tooltip-annotation nil :inherit 'company-tooltip :foreground blue)
-  (set-face-attribute 'company-tooltip-annotation-selection nil :inherit 'company-tooltip-selection :foreground yellow)))
-
+  (set-face-attribute 'company-tooltip nil :foreground foreground :background "#555")
+  (set-face-attribute 'company-scrollbar-fg nil :background yellow)
+  (set-face-attribute 'company-scrollbar-bg nil :background gray)
+  (set-face-attribute 'company-tooltip-common nil :foreground red)
+  (set-face-attribute 'company-tooltip-selection nil :background blue)
+  (set-face-attribute 'company-tooltip-annotation nil :inherit 'company-tooltip
+                      :foreground blue)
+  (set-face-attribute 'company-tooltip-annotation-selection nil :inherit 'company-tooltip-selection
+                      :foreground yellow)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;

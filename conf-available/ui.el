@@ -322,7 +322,7 @@
  (setq nlinum-format "  %d "
        nlinum-highlight-current-line t)
  (nby/with-current-theme-colors
-  (set-face-attribute 'nlinum-current-line nil :weight 'light :background mode-line :foreground yellow))
+  (set-face-attribute 'nlinum-current-line nil :weight 'light :background background2 :foreground yellow))
  (define-globalized-minor-mode nby/global-nlinum-mode nlinum-mode
    (lambda ()
      (unless (or (minibufferp)
