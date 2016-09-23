@@ -33,11 +33,11 @@
   (nby/first-exist
    (nby/prepend-user-home-dir
     '(".usercustom.el" "_usercustom.el"))))
+(setq custom-file user-custom-file)
 (defvar user-local-file
   (nby/first-exist
    (nby/prepend-user-home-dir
     '(".userlocal.el" "_userlocal.el"))))
-(setq custom-file user-custom-file)
 
 ;;; Set ELPA sources before loading packages
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
