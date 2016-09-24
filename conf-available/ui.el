@@ -85,6 +85,13 @@
    'sublime-themes
    (load-theme 'spolsky t)
    (set-face-attribute 'vertical-border nil :foreground "#333")
+   (add-hook
+    'after-init-hook
+    #'(lambda ()
+        (let ((active-bg (face-attribute 'mode-line :background))
+              (inactive-bg (face-attribute 'mode-line-inactive :background)))
+          (set-face-attribute 'mode-line nil :box `(:line-width 3 :color ,active-bg))
+          (set-face-attribute 'mode-line-inactive nil :box `(:line-width 3 :color ,inactive-bg)))))
    (setq nby/current-theme-colors 'nby/with-spolsky-theme-colors)))
 
 (defun load-monokai-theme ()
