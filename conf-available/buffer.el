@@ -34,8 +34,10 @@
    (setq helm-google-suggest-use-curl-p t))
 
  (when (executable-find "ack-grep")
-   (setq helm-grep-default-command "ack-grep -Hn --no-group --no-color %e %p %f"
-         helm-grep-default-recurse-command "ack-grep -H --no-group --no-color %e %p %f"))
+   (setq helm-grep-default-command
+         "ack-grep -Hn --color --smart-case --no-group %e %p %f"
+         helm-grep-default-recurse-command
+         "ack-grep -H --color --smart-case --no-group %e %p %f"))
 
  (global-set-key (kbd "C-x C-f") 'helm-find-files)
  (global-set-key (kbd "M-x") 'helm-M-x)
