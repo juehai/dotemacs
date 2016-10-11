@@ -196,13 +196,13 @@
 ;; Sticky Window
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(nby/with-feature
- 'sticky-windows-plus
- ; (global-set-key "\C-x0" 'sticky-window-delete-window)
- ; this feature makes C-x 1 behave weird
- ; (global-set-key "\C-x1" 'sticky-window-delete-other-windows)
- (global-set-key "\C-x9" 'sticky-windows-plus-toggle))
+;; conflicts with neo-tree
+;; (nby/with-feature
+;;  'sticky-windows-plus
+;;  ; (global-set-key "\C-x0" 'sticky-window-delete-window)
+;;  ; this feature makes C-x 1 behave weird
+;;  ; (global-set-key "\C-x1" 'sticky-window-delete-other-windows)
+;; (global-set-key "\C-x9" 'sticky-windows-plus-toggle))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -314,5 +314,14 @@
  'rotate
  (global-set-key (kbd "M-SPC") 'rotate-layout)
  (global-set-key (kbd "M-j") 'rotate-window))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; popwin: https://github.com/m2ym/popwin-el
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(nby/with-feature
+ 'popwin
+ (popwin-mode 1))
 
 ;;; ui.el ends here
