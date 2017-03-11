@@ -35,6 +35,10 @@
 (global-set-key "\C-c." 'nby/indent-region)
 (global-set-key "\C-c," 'nby/unindent-region)
 
+(nby/with-feature
+ 'column-enforce-mode
+ (global-column-enforce-mode t))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; YAML
