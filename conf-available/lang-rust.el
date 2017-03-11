@@ -17,7 +17,15 @@
      (compile (format "rustc %s && %s"
                       (buffer-file-name)
                       (file-name-sans-extension (buffer-file-name))))))
+
+ (defun rust-run-test ()
+   "Test rust project."
+   (interactive)
+   (save-buffer)
+   (compile "cargo test"))
+
  (define-key rust-mode-map (kbd "C-c C-c") 'rust-save-compile-and-run)
+ (define-key rust-mode-map (kbd "C-c C-t") 'rust-run-test)
 
  (yas/minor-mode)
 
