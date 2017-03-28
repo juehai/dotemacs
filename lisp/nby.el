@@ -35,13 +35,14 @@
 If NOERROR is not nil, a warning will be output indicate the path doesn't
 exist."
   (let ((new-load-path (nby/path-join user-conf-dir path)))
-    (if (file-exists-p new-load-path)
-      (progn
-        (add-to-list 'load-path new-load-path)
-        (nby/log-info "Adding new load path: %s" new-load-path)
-        new-load-path)
-      (unless noerror
-        (nby/log-warn "Path %s doesn't exist" new-load-path)))))
+    (unless (member new-load-path load-path)
+      (if (file-exists-p new-load-path)
+          (progn
+            (add-to-list 'load-path new-load-path)
+            (nby/log-info "Adding new load path: %s" new-load-path)
+            new-load-path)
+        (unless noerror
+          (nby/log-warn "Path %s doesn't exist" new-load-path))))))
 
 
 (defun nby/build-relative-path (&rest args)
