@@ -324,4 +324,19 @@
  'popwin
  (popwin-mode 1))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; layout tunings
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defun nby/display-header-as-margin ()
+  (unless (string-match "^\*" (buffer-name))
+    (nby/with-current-theme-colors
+     (set-face-attribute 'header-line nil :background background :box nil)))
+  (setq header-line-format "  "))
+
+(add-hook 'buffer-list-update-hook 'nby/display-header-as-margin)
+(add-hook 'emacs-startup-hook 'nby/display-header-as-margin)
+
+
 ;;; ui.el ends here
