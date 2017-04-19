@@ -30,14 +30,24 @@
  (global-set-key (kbd "C-c h") 'helm-command-prefix)
  (global-unset-key (kbd "C-x c"))
 
+
+ (when (executable-find "ack")
+   (setq helm-grep-default-command
+         "ack -H --color --smart-case --no-group %p %f"
+         helm-grep-default-recurse-command
+         "ack -H --color --smart-case --no-group %p %f"))
+
+ ;; ag must be installed
+ (when (executable-find "ag")
+   (nby/with-feature
+    'helm-ag
+    (custom-set-variables
+     '(helm-ag-base-command "ag --nocolor --nogroup --ignore-case")
+     '(helm-ag-command-option "--all-text")
+     '(helm-ag-insert-at-point 'symbol))))
+
  (when (executable-find "curl")
    (setq helm-google-suggest-use-curl-p t))
-
- (when (executable-find "ack-grep")
-   (setq helm-grep-default-command
-         "ack-grep -Hn --color --smart-case --no-group %e %p %f"
-         helm-grep-default-recurse-command
-         "ack-grep -H --color --smart-case --no-group %e %p %f"))
 
  (global-set-key (kbd "C-x C-f") 'helm-find-files)
  (global-set-key (kbd "M-x") 'helm-M-x)
