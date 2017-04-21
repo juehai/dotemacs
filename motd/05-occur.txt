@@ -1,3 +1,5 @@
-anything-occur at point
+helm-occur at point
 
 - C-o :: show all occurences of current word in current buffer
+
+Dont forget to use C-j to preview the context.
