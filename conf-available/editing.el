@@ -176,4 +176,14 @@ user."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (nby/with-feature 'yasnippet (yas-global-mode t))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; expand-region
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(nby/with-feature
+ 'expand-region
+ (global-set-key (kbd "C--") 'er/contract-region)
+ (global-set-key (kbd "C-=") 'er/expand-region))
 ;;; editing.el ends here
