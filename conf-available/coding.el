@@ -37,7 +37,7 @@
 
 (nby/with-feature
  'column-enforce-mode
- (setq column-enforce-column 116)
+ (setq column-enforce-column 100)
  (global-column-enforce-mode t))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
