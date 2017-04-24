@@ -94,11 +94,12 @@
           (set-face-attribute 'mode-line-inactive nil :box `(:line-width 3 :color ,inactive-bg)))))
    (setq nby/current-theme-colors 'nby/with-spolsky-theme-colors)))
 
-(defun load-monokai-theme ()
-  "Apply monokai theme with custom fixes"
+(defun load-console-theme ()
+  "Apply console theme with custom fixes"
   (nby/with-feature
-   'monokai-theme
-   (setq nby/current-theme-colors 'nby/with-monokai-theme-colors)))
+   'color-theme
+   (color-theme-initialize)
+   (color-theme-clarity)))
 
 (defun load-solarized-light-theme ()
   "Apply monokai theme with custom fixes"
@@ -124,9 +125,7 @@
       ;; enable color-theme
       (if window-system
           (load-spolsky-theme)
-          ;; (load-solarized-light-theme)
-          ;; (load-solarized-dark-theme)
-          (load-spolsky-theme)))))
+          (load-console-theme)))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
