@@ -285,6 +285,37 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
+;; powerline
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(nby/with-feature
+ 'powerline
+
+ (defun powerline-minimalistic-theme ()
+   "Setup a nano-like mode-line."
+   (interactive)
+   (setq-default mode-line-format
+                 '("%e"
+                   (:eval
+                    (let* ((active (powerline-selected-window-active))
+                           (lhs (list (if (buffer-modified-p)
+                                          (powerline-raw "[ Modified ]" nil 'r)
+                                        (powerline-raw "" nil 'r))))
+                           (rhs (list (powerline-raw "%4l" nil 'l)
+                                      (powerline-raw ":" nil 'l)
+                                      (powerline-raw "%3c" nil 'r)))
+                           (center (list (powerline-raw "%b" nil))))
+                      (concat (powerline-render lhs)
+                              (powerline-fill-center nil (/ (powerline-width center) 2.0))
+                              (powerline-render center)
+                              (powerline-fill nil (powerline-width rhs))
+                              (powerline-render rhs)))))))
+
+ (powerline-minimalistic-theme))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 ;; nlinum-mode
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
