@@ -300,8 +300,8 @@
                    (:eval
                     (let* ((active (powerline-selected-window-active))
                            (lhs (list (if (buffer-modified-p)
-                                          (powerline-raw "[ Modified ]" nil 'r)
-                                        (powerline-raw "" nil 'r))))
+                                          (powerline-raw " [ Modified ] " nil 'r)
+                                        (powerline-raw "  " nil 'r))))
                            (rhs (list (powerline-raw "%4l" nil 'l)
                                       (powerline-raw ":" nil 'l)
                                       (powerline-raw "%3c" nil 'r)))
