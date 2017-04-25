@@ -291,6 +291,7 @@
 
 (nby/with-feature
  'powerline
+ (setq powerline-gui-use-vcs-glyph t)
 
  (defun powerline-minimalistic-theme ()
    "Setup a nano-like mode-line."
@@ -299,13 +300,17 @@
                  '("%e"
                    (:eval
                     (let* ((active (powerline-selected-window-active))
-                           (lhs (list (if (buffer-modified-p)
-                                          (powerline-raw " [ Modified ] " nil 'r)
-                                        (powerline-raw "  " nil 'r))))
+                           (lhs (list
+                                 (powerline-vc nil 'l)
+                                 (powerline-narrow nil 'l)
+                                 (if buffer-read-only (powerline-raw " RO " nil 'r))))
                            (rhs (list (powerline-raw "%4l" nil 'l)
                                       (powerline-raw ":" nil 'l)
                                       (powerline-raw "%3c" nil 'r)))
-                           (center (list (powerline-raw "%b" nil))))
+                           (center (list
+                                    (when (buffer-modified-p) (powerline-raw " * " nil 'l))
+                                    (powerline-raw "%b" nil)
+                                    (when (buffer-modified-p) (powerline-raw " * " nil 'r)))))
                       (concat (powerline-render lhs)
                               (powerline-fill-center nil (/ (powerline-width center) 2.0))
                               (powerline-render center)
