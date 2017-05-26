@@ -33,6 +33,6 @@
    (message (nby/get-motd)))
 
  (setq initial-scratch-message (nby/get-motd))
-)
+ )
 
 ;;; motd.el ends here
