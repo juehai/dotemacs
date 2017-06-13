@@ -319,6 +319,8 @@
 (nby/with-feature
  'flycheck-pos-tip
  (setq flycheck-pos-tip-max-width 80)
- (setq flycheck-pos-tip-timeout 30))
+ (setq flycheck-pos-tip-timeout 30)
+ (with-eval-after-load 'flycheck
+   (flycheck-pos-tip-mode)))
 
 ;;; coding.el ends here
