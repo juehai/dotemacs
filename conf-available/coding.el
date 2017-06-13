@@ -310,4 +310,15 @@
  (nby/with-feature 'helm (helm-projectile-on))
  (projectile-global-mode t))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Display flycheck error in tips
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(nby/with-feature
+ 'flycheck-pos-tip
+ (setq flycheck-pos-tip-max-width 80)
+ (setq flycheck-pos-tip-timeout 30))
+
 ;;; coding.el ends here
