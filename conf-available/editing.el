@@ -18,7 +18,9 @@
 (nby/log-info "backup/autosave directory is " nby/emacs-temporary-file-directory)
 
 (custom-set-variables
- '(backup-directory-alist `((".*" . ,nby/emacs-temporary-file-directory)))
+ '(backup-by-copying t)
+ '(auto-save-file-name-transforms '((".*" (,nby/build-relative-path "autosaves") t)))
+ '(backup-directory-alist `(".*" (,nby/build-relative-path "backups")))
  '(recentf-save-file (nby/build-relative-path "db/recentf.el"))
  '(tab-width           8)               ;; default tab width
  '(fill-column        78)               ;; default column width
@@ -76,7 +78,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (custom-set-variables
- '(backup-by-copying t)                     ;; don't clobber symlinks
  '(delete-old-versions t)
  '(kept-new-versions 10)
  '(kept-old-versions 5)
