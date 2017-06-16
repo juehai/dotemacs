@@ -19,8 +19,7 @@
 
 (custom-set-variables
  '(backup-by-copying t)
- '(auto-save-file-name-transforms '((".*" (,nby/build-relative-path "autosaves") t)))
- '(backup-directory-alist `(".*" (,nby/build-relative-path "backups")))
+ '(backup-directory-alist `(".*" ,nby/emacs-temporary-file-directory))
  '(recentf-save-file (nby/build-relative-path "db/recentf.el"))
  '(tab-width           8)               ;; default tab width
  '(fill-column        78)               ;; default column width
