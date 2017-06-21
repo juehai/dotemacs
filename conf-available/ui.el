@@ -97,9 +97,9 @@
 (defun load-console-theme ()
   "Apply console theme with custom fixes"
   (nby/with-feature
-   'color-theme
+   'ample-theme
    (color-theme-initialize)
-   (color-theme-clarity)))
+   (load-theme 'ample t t)))
 
 (defun load-solarized-light-theme ()
   "Apply monokai theme with custom fixes"
