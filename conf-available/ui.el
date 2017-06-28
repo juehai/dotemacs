@@ -328,7 +328,7 @@
 (nby/with-feature
  'nlinum
  ;; better with 1.7+
- (setq nlinum-format "  %d "
+ (setq nlinum-format "  %4d "
        nlinum-highlight-current-line t)
  (nby/with-current-theme-colors
   (set-face-attribute 'nlinum-current-line nil :weight 'light :background background2 :foreground yellow))
