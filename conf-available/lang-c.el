@@ -32,4 +32,23 @@
  (add-hook 'c-mode-hook 'nby/lang-c-google-style)
  (add-hook 'c++-mode-hook 'nby/lang-c-google-style))
 
+(nby/with-feature
+ 'company-irony
+ (add-to-list 'company-backends 'company-irony)
+ (add-hook 'c++-mode-hook (lambda ()
+                            (irony-mode)
+                            (irony-eldoc)))
+ ;; Use irony's completion functions.
+ (add-hook 'irony-mode-hook
+           (lambda ()
+             (define-key irony-mode-map [remap completion-at-point]
+               'irony-completion-at-point-async)
+
+             (define-key irony-mode-map [remap complete-symbol]
+               'irony-completion-at-point-async)
+
+             (irony-cdb-autosetup-compile-options))))
+
+
+
 ;;; lang-c.el ends here

@@ -72,6 +72,15 @@
  #'(lambda ()
      (local-set-key "\C-c\C-c" #'(lambda () (compile "scons upload"))))))
 
+(nby/with-feature
+ 'platformio-mode
+ (add-hook 'arduino-mode-hook (lambda ()
+                                (venv-workon "platformio")
+                                (platformio-conditionally-enable)))
+ (add-hook 'c++-mode-hook (lambda ()
+                            (venv-workon "platformio")
+                            (platformio-conditionally-enable))))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; PHP mode
@@ -322,5 +331,14 @@
  (setq flycheck-pos-tip-timeout 30)
  (with-eval-after-load 'flycheck
    (flycheck-pos-tip-mode)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; lsp-mode
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(nby/with-feature
+ 'lsp-mode
+ (add-hook 'prog-mode-hook 'lsp-mode))
 
 ;;; coding.el ends here

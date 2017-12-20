@@ -210,3 +210,14 @@ user."
 (nby/with-feature
  'symbol-overlay
  (global-set-key (kbd "M-i") 'symbol-overlay-put))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; plantuml-mode
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(nby/with-feature
+ 'plantuml-mode
+ (setq plantuml-output-type "png")
+ (add-to-list 'auto-mode-alist '("\\.puml\\'" . plantuml-mode)))
