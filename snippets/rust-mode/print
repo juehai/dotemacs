@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
-# name: print
+# name: print!("{}", value);
 # key: print
 # --
-println!("${1:message}{:?}", ${2:variables});
+print!("${1:{}}", $2);

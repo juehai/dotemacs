@@ -120,17 +120,17 @@ Skips capture tasks."
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;(nby/with-feature
-; 'org
-; (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
-; (org-babel-do-load-languages
-;  'org-babel-load-languages
-;  '((dot . t)
-;    (ditaa . t)
-;    (plantuml . t)
-;    (R . t)
-;    (latex . t)
-;    (gnuplot . t))))
+(nby/with-feature
+'org
+(add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((dot . t)
+   (ditaa . t)
+   (plantuml . t)
+   (R . t)
+   (latex . t)
+   (gnuplot . t))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
