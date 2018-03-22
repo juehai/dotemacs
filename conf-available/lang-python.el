@@ -75,7 +75,8 @@ is considered to be a project root."
 
 (nby/add-to-load-path "lisp/vendor/extra")
 (nby/with-feature 'flycheck-virtualenv)
-;(nby/with-feature 'pymacs)
+(nby/with-feature 'flycheck-pychecker)
+(nby/with-feature 'flycheck-pyflakes)
 (nby/with-feature 'virtualenvwrapper)
 
 ;(nby/with-feature
@@ -105,14 +106,14 @@ is considered to be a project root."
        '(tab-width            nby/python-indentation-size)
        '(python-indent        nby/python-indentation-size)
        '(py-indent-offset     nby/python-indentation-size)
+       '(flycheck-checker     'python-pyflakes)
        '(indent-tabs-mode     nil))
       ;; FIXME: smart indentation may cause python-mode hang
       ;;        py-smart-indentation now seems gone
       ;; (py-smart-indentation-on)
       (local-set-key (kbd "C-c C-c") 'eval-buffer-as-python)))
-;)
 
-
+(add-hook 'python-mode-hook #'auto-virtualenvwrapper-activate)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; Jedi: Introspection and auto complete
