@@ -71,15 +71,37 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; disable jshint since we prefer eslint checking
+(setq-default flycheck-disabled-checkers
+              (append flycheck-disabled-checkers
+                      '(javascript-jshint)))
+;; disable json-jsonlist checking for json files
+(setq-default flycheck-disabled-checkers
+              (append flycheck-disabled-checkers
+                      '(json-jsonlist)))
+
+(nby/with-feature
+ 'company-tern
+ '(add-to-list 'company-backends 'company-tern))
+
+(nby/with-feature
+ 'tern
+ (add-hook 'js2-mode-hook (lambda () (tern-mode t))))
+
+(flycheck-add-mode 'javascript-eslint 'web-mode)
+(flycheck-add-mode 'javascript-eslint 'js2-mode)
+
 (nby/with-feature
  'skewer-mode
+ (add-hook 'js2-mode-hook 'skewer-mode))
+
  (nby/with-feature
   'js2-mode
-
-  (add-hook 'js2-mode-hook 'skewer-mode)
-  (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode)))
- (add-hook 'css-mode-hook 'skewer-css-mode)
- (add-hook 'web-mode-hook 'skewer-html-mode)
- (add-hook 'html-mode-hook 'skewer-html-mode))
+  (setq js2-strict-missing-semi-warning nil
+        js2-missing-semi-one-line-override nil)
+  (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+  (add-hook 'css-mode-hook 'skewer-css-mode)
+  (add-hook 'web-mode-hook 'skewer-html-mode)
+  (add-hook 'html-mode-hook 'skewer-html-mode))
 
 ;;; w3c.el ends here

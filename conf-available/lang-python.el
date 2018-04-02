@@ -75,7 +75,6 @@ is considered to be a project root."
 
 (nby/add-to-load-path "lisp/vendor/extra")
 (nby/with-feature 'flycheck-virtualenv)
-(nby/with-feature 'flycheck-pychecker)
 (nby/with-feature 'flycheck-pyflakes)
 (nby/with-feature 'virtualenvwrapper)
 
