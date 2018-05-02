@@ -154,7 +154,7 @@
  '(org-use-fast-todo-selection t)
  '(package-selected-packages
    (quote
-    (tern flycheck-pyflakes auto-virtualenvwrapper flycheck-pycheckers tide yasnippet yaml-mode xwidgete xcscope wrap-region window-numbering web-mode w3m vline virtualenvwrapper utop typescript-mode tuareg toml-mode symbol-overlay sublime-themes subatomic256-theme subatomic-theme smart-mode-line skewer-mode shm rustfmt ruby-compilation rotate rainbow-mode racer powerline popwin plantuml-mode php+-mode nlinum nginx-mode multiple-cursors mu-cite markdown-mode+ magit lua-mode latex-preview-pane json-mode jinja2-mode ido-vertical-mode hindent highlight-parentheses helm-projectile helm-bm helm-ag helm-ack haskell-mode google-c-style go-mode git-gutter-fringe+ flycheck-rust flycheck-pos-tip fish-mode expand-region edit-server dockerfile-mode dired+ diffview dashboard company-web company-racer company-jedi column-enforce-mode color-theme coffee-mode cider boxquote avy atom-dark-theme arduino-mode all-the-icons)))
+    (jdee zoom tern flycheck-pyflakes auto-virtualenvwrapper flycheck-pycheckers tide yasnippet yaml-mode xwidgete xcscope wrap-region window-numbering web-mode w3m vline virtualenvwrapper utop typescript-mode tuareg toml-mode symbol-overlay sublime-themes subatomic256-theme subatomic-theme smart-mode-line skewer-mode shm rustfmt ruby-compilation rotate rainbow-mode racer powerline popwin plantuml-mode php+-mode nlinum nginx-mode multiple-cursors mu-cite markdown-mode+ magit lua-mode latex-preview-pane json-mode jinja2-mode ido-vertical-mode hindent highlight-parentheses helm-projectile helm-bm helm-ag helm-ack haskell-mode google-c-style go-mode git-gutter-fringe+ flycheck-rust flycheck-pos-tip fish-mode expand-region edit-server dockerfile-mode dired+ diffview dashboard company-web company-racer company-jedi column-enforce-mode color-theme coffee-mode cider boxquote avy atom-dark-theme arduino-mode all-the-icons)))
  '(py-start-run-py-shell nil)
  '(pylookup-db-file "/home/jianingy/.emacs.d/db/pylookup.db" t)
  '(pylookup-program "/home/jianingy/.emacs.d/lisp/vendor/pylookup/pylookup.py" t)
@@ -172,7 +172,20 @@
  '(tab-width 8)
  '(tool-bar-mode nil)
  '(version-control t)
- '(visible-bell t))
+ '(visible-bell t)
+ '(zoom-ignore-predicates
+   (quote
+    ((lambda nil
+       (>
+        (count-lines
+         (point-min)
+         (point-max))
+        20)))))
+ '(zoom-ignored-buffer-name-regexps (quote ("^*")))
+ '(zoom-ignored-buffer-names (quote ("test.el")))
+ '(zoom-ignored-major-modes (quote (dired-mode markdown-mode)))
+ '(zoom-mode t nil (zoom))
+ '(zoom-size (quote size-callback)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -222,3 +222,18 @@ user."
  'plantuml-mode
  (setq plantuml-output-type "png")
  (add-to-list 'auto-mode-alist '("\\.puml\\'" . plantuml-mode)))
+
+
+(nby/with-feature
+ 'zoom
+ (defun size-callback ()
+   (cond ((> (frame-pixel-width) 1280) '(90 . 0.75))
+         (t                            '(0.5 . 0.5))))
+
+ (custom-set-variables
+  '(zoom-mode t)
+  '(zoom-size 'size-callback)
+  '(zoom-ignored-major-modes '(dired-mode markdown-mode))
+  '(zoom-ignored-buffer-names '("test.el"))
+  '(zoom-ignored-buffer-name-regexps '("^*"))
+  '(zoom-ignore-predicates '((lambda () (> (count-lines (point-min) (point-max)) 20))))))

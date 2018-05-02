@@ -105,7 +105,7 @@ is considered to be a project root."
        '(tab-width            nby/python-indentation-size)
        '(python-indent        nby/python-indentation-size)
        '(py-indent-offset     nby/python-indentation-size)
-       '(flycheck-checker     'python-pyflakes)
+       '(flycheck-checker     'python-flake8)
        '(indent-tabs-mode     nil))
       ;; FIXME: smart indentation may cause python-mode hang
       ;;        py-smart-indentation now seems gone

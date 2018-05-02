@@ -3,6 +3,8 @@
 ;;; Code:
 
 
+(define-coding-system-alias 'UTF-8 'utf-8)
+
 ;; Workaround the annoying warnings:
 ;;    Warning (mumamo-per-buffer-local-vars):
 ;;    Already 'permanent-local t: buffer-file-name
