@@ -45,6 +45,4 @@
 
 (yas-minor-mode)
 
-
-
 ;;; workaround.el ends here

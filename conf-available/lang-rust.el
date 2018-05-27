@@ -37,7 +37,7 @@
   'rustfmt
   (define-key rust-mode-map (kbd "C-c C-f") #'rustfmt-format-buffer))
 
- (add-hook 'rust-mode-hook #'lsp-rust-enable)
+
  (nby/with-feature
   'racer
   (add-hook 'rust-mode-hook #'racer-mode)
@@ -48,6 +48,10 @@
    'company-racer
    (define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
    (setq company-tooltip-align-annotations t)))
- )
 
-(nby/with-feature 'lsp-rust)
+
+ ;; (nby/with-feature 'company-lsp
+ ;;                   (push 'company-lsp company-backends))
+ ;; (nby/with-feature 'lsp-rust)
+ ;; (add-hook 'rust-mode-hook #'lsp-rust-enable)
+)

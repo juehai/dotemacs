@@ -332,13 +332,4 @@
  (with-eval-after-load 'flycheck
    (flycheck-pos-tip-mode)))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;; lsp-mode
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(nby/with-feature
- 'lsp-mode
- (add-hook 'prog-mode-hook 'lsp-mode))
-
 ;;; coding.el ends here
