@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: python-debug
+# key: bp
+# --
+import ipdb; ipdb.set_trace(context=5)  # noqa
