@@ -104,4 +104,6 @@
   (add-hook 'web-mode-hook 'skewer-html-mode)
   (add-hook 'html-mode-hook 'skewer-html-mode))
 
+(setq js-indent-level 2)
+
 ;;; w3c.el ends here
