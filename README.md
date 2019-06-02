@@ -1,11 +1,19 @@
 # Introduction
 
-Jianing's Emacs Configuration
+Forked from Jianing's Emacs Configuration
 
-![emacs screenshot](./screenshots/emacs-20160927.png)
+Trying to switch from Vim to Emacs since I'm using iPad Pro as a productivity tool at the moment.
 
-# Highlights
+A problem is that the bluetooth keyboard doesn't have ESC key, which is the same problem that A new Macbook Pro has.
 
-- automatically install required plugins via elpa
-- non-interrupt loading when plugins is missing
-- a motd system for tips & tricks :P
+Emacs could help to avoid using ESC, so I decide to start using Emacs again.
+
+
+Thanks for Jianing's configuration, it gives me a lot of ideas to start.
+
+
+TODO:
+
+* [X] changed hard-code home dir
+* [ ] need to fix the Alt key on iPad mode.
+* [ ] make a slim version of this configuration.
